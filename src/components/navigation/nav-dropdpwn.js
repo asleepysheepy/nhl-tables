@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 
-const NavDropdown = ({ teams}) => {
+const NavDropdown = ({ teams }) => {
   return (
     <Transition
       as={Fragment}
@@ -13,8 +13,8 @@ const NavDropdown = ({ teams}) => {
       leaveTo={'transform opacity-0 scale-95'}
     >
       <Menu.Items className={'origin-top-right absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none'}>
-        {teams.map(({ name, Logo }) => (
-          <Menu.Item key={name}>
+        {teams.map(({ name, nhlId, Logo }) => (
+          <Menu.Item key={nhlId}>
             {({ active }) => (
               <a
                 className={`${active ? 'bg-neutral-100 text-neutral-900' : 'text-neutral-700'} group flex items-center px-4 py-2`}

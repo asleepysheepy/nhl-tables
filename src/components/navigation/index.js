@@ -16,11 +16,13 @@ const Navigation = () => {
                   <div className={'flex-shrink-0'}>
                     <NhlLogo height={40} width={40} />
                   </div>
+                </div>
+                <div>
                   <div className={'hidden md:block'}>
                     <NavContent />
                   </div>
+                  <MobileButton open={open} />
                 </div>
-                <MobileButton open={open} />
               </div>
             </div>
           </div>
