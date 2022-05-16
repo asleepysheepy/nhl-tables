@@ -1,4 +1,4 @@
-export function TornotoMapleLeafsLogo({ height = 80, width = 80 }) {
+export function TorontoMapleLeafsLogo({ height = 80, width = 80 }) {
   return (
     <svg
       enableBackground={'new 0 0 80 80'}
