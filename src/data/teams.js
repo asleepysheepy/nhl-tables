@@ -9,6 +9,7 @@ const anaheimDucks = {
   division: divisions.pacific,
   Logo: logos.AnaheimDucksLogo,
   name: 'Anaheim Ducks',
+  cssName: 'anaheim-ducks',
 }
 
 const arizonaCoyotes = {
@@ -18,6 +19,7 @@ const arizonaCoyotes = {
   division: divisions.central,
   Logo: logos.ArizonaCoyotesLogo,
   name: 'Arizona Coyotes',
+  cssName: 'arizona-coyotes',
 }
 
 const bostonBruins = {
@@ -27,6 +29,7 @@ const bostonBruins = {
   division: divisions.atlantic,
   Logo: logos.BostonBruinsLogo,
   name: 'Boston Bruins',
+  cssName: 'boston-bruins',
 }
 
 const buffaloSabres = {
@@ -36,6 +39,7 @@ const buffaloSabres = {
   division: divisions.atlantic,
   Logo: logos.BuffaloSabresLogo,
   name: 'Buffalo Sabres',
+  cssName: 'buffalo-sabres',
 }
 
 const calgaryFlames = {
@@ -45,6 +49,7 @@ const calgaryFlames = {
   division: divisions.pacific,
   Logo: logos.CalgaryFlamesLogo,
   name: 'Calgary Flames',
+  cssName: 'calgary-flames',
 }
 
 const carolinaHurricanes = {
@@ -54,6 +59,7 @@ const carolinaHurricanes = {
   division: divisions.metropolitan,
   Logo: logos.CarolinaHurricanesLogo,
   name: 'Carolina Hurricanes',
+  cssName: 'carolina-hurricanes',
 }
 
 const chicagoBlackhawks = {
@@ -63,6 +69,7 @@ const chicagoBlackhawks = {
   division: divisions.central,
   Logo: logos.ChicagoBlackhawksLogo,
   name: 'Chicago Blackhawks',
+  cssName: 'chicago-blackhawks',
 }
 
 const coloradoAvalanche = {
@@ -72,6 +79,7 @@ const coloradoAvalanche = {
   division: divisions.central,
   Logo: logos.ColoradoAvalancheLogo,
   name: 'Colorado Avalanche',
+  cssName: 'colorado-avalanche',
 }
 
 const columbusBlueJackets = {
@@ -81,6 +89,7 @@ const columbusBlueJackets = {
   division: divisions.metropolitan,
   Logo: logos.ColumbusBlueJacketsLogo,
   name: 'Columbus Blue Jackets',
+  cssName: 'columbus-blue-jackets',
 }
 
 const dallasStars = {
@@ -90,6 +99,7 @@ const dallasStars = {
   division: divisions.central,
   Logo: logos.DallasStarsLogo,
   name: 'Dallas Stars',
+  cssName: 'dallas-stars',
 }
 
 const detroitRedWings = {
@@ -99,6 +109,7 @@ const detroitRedWings = {
   division: divisions.atlantic,
   Logo: logos.DetroitRedWingsLogo,
   name: 'Detroit Red Wings',
+  cssName: 'detroit-red-wings',
 }
 
 const edmontonOilers = {
@@ -108,6 +119,7 @@ const edmontonOilers = {
   division: divisions.pacific,
   Logo: logos.EdmontonOilersLogo,
   name: 'Edmonton Oilers',
+  cssName: 'edmonton-oilers',
 }
 
 const floridaPanthers = {
@@ -117,6 +129,7 @@ const floridaPanthers = {
   division: divisions.atlantic,
   Logo: logos.FloridaPanthersLogo,
   name: 'Florida Panthers',
+  cssName: 'florida-panthers',
 }
 
 const losAngelesKings = {
@@ -126,6 +139,7 @@ const losAngelesKings = {
   division: divisions.pacific,
   Logo: logos.LosAngelesKingsLogo,
   name: 'Los Angeles Kings',
+  cssName: 'los-angeles-kings',
 }
 
 const minnesotaWild = {
@@ -135,6 +149,7 @@ const minnesotaWild = {
   division: divisions.central,
   Logo: logos.MinnesotaWildLogo,
   name: 'Minnesota Wild',
+  cssName: 'minnesota-wild',
 }
 
 const montrealCanadiens = {
@@ -144,6 +159,7 @@ const montrealCanadiens = {
   division: divisions.atlantic,
   Logo: logos.MontrealCanadiensLogo,
   name: 'Montréal Canadiens',
+  cssName: 'montreal-canadiens',
 }
 
 const nashvillePredators = {
@@ -153,6 +169,7 @@ const nashvillePredators = {
   division: divisions.central,
   Logo: logos.NashvillePredatorsLogo,
   name: 'Nashville Predators',
+  cssName: 'nashville-predators',
 }
 
 const newJerseyDevils = {
@@ -162,6 +179,7 @@ const newJerseyDevils = {
   division: divisions.metropolitan,
   Logo: logos.NewJerseyDevilsLogo,
   name: 'New Jersey Devils',
+  cssName: 'new-jersey-devils',
 }
 
 const newYorkIslanders = {
@@ -171,6 +189,7 @@ const newYorkIslanders = {
   division: divisions.metropolitan,
   Logo: logos.NewYorkIslandersLogo,
   name: 'New York Islanders',
+  cssName: 'new-york-islanders',
 }
 
 const newYorkRangers = {
@@ -180,6 +199,7 @@ const newYorkRangers = {
   division: divisions.metropolitan,
   Logo: logos.NewYorkRangersLogo,
   name: 'New York Rangers',
+  cssName: 'new-york-rangers',
 }
 
 const ottawaSenators = {
@@ -189,6 +209,7 @@ const ottawaSenators = {
   division: divisions.atlantic,
   Logo: logos.OttawaSenatorsLogo,
   name: 'Ottawa Senators',
+  cssName: 'ottawa-senators',
 }
 
 const philadelphiaFlyers = {
@@ -198,6 +219,7 @@ const philadelphiaFlyers = {
   division: divisions.metropolitan,
   Logo: logos.PhiladelphiaFlyersLogo,
   name: 'Philadelphia Flyers',
+  cssName: 'philadelphia-flyers',
 }
 
 const pittsburghPenguins = {
@@ -207,6 +229,7 @@ const pittsburghPenguins = {
   division: divisions.metropolitan,
   Logo: logos.PittsburghPenguinsLogo,
   name: 'Pittsburgh Penguins',
+  cssName: 'pittsburgh-penguins',
 }
 
 const sanJoseSharks = {
@@ -216,6 +239,7 @@ const sanJoseSharks = {
   division: divisions.pacific,
   Logo: logos.SanJoseSharksLogo,
   name: 'San Jose Sharks',
+  cssName: 'san-jose-sharks',
 }
 
 const seattleKraken = {
@@ -225,6 +249,7 @@ const seattleKraken = {
   division: divisions.pacific,
   Logo: logos.SeattleKrakenLogo,
   name: 'Seattle Kraken',
+  cssName: 'seattle-kraken',
 }
 
 const stLouisBlues = {
@@ -234,6 +259,7 @@ const stLouisBlues = {
   division: divisions.central,
   Logo: logos.StLouisBluesLogo,
   name: 'St. Louis Blues',
+  cssName: 'st-louis-blues',
 }
 
 const tampaBayLightning = {
@@ -243,6 +269,7 @@ const tampaBayLightning = {
   division: divisions.atlantic,
   Logo: logos.TampaBayLightningLogo,
   name: 'Tampa Bay Lightning',
+  cssName: 'tampa-bay-lightning',
 }
 
 const torontoMapleLeafs = {
@@ -252,6 +279,7 @@ const torontoMapleLeafs = {
   division: divisions.atlantic,
   Logo: logos.TorontoMapleLeafsLogo,
   name: 'Toronto Maple Leafs',
+  cssName: 'toronto-maple-leafs',
 }
 
 const vancouverCanucks = {
@@ -261,6 +289,7 @@ const vancouverCanucks = {
   division: divisions.pacific,
   Logo: logos.VancouverCanucksLogo,
   name: 'Vancouver Canucks',
+  cssName: 'vancouver-canucks',
 }
 
 const vegasGoldenKnights = {
@@ -270,6 +299,7 @@ const vegasGoldenKnights = {
   division: divisions.pacific,
   Logo: logos.VegasGoldenKnightsLogo,
   name: 'Vegas Golden Knights',
+  cssName: 'vegas-golden-knights',
 }
 
 const washingtonCapitals = {
@@ -279,6 +309,7 @@ const washingtonCapitals = {
   division: divisions.metropolitan,
   Logo: logos.WashingtonCapitalsLogo,
   name: 'Washington Capitals',
+  cssName: 'washington-capitals',
 }
 
 const winnipegJets = {
@@ -288,6 +319,7 @@ const winnipegJets = {
   division: divisions.central,
   Logo: logos.WinnipegJetsLogo,
   name: 'Winnipeg Jets',
+  cssName: 'winnipeg-jets',
 }
 
 export const teams = {
