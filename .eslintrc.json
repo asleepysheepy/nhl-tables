@@ -77,6 +77,8 @@
     "react/jsx-tag-spacing": ["error", {"closingSlash": "never", "beforeSelfClosing": "always", "afterOpening": "never"}],
     "react/jsx-wrap-multilines": ["error"],
 
-    "sort-imports-es6-autofix/sort-imports-es6": [2, {"ignoreCase": false, "ignoreMemberSort": false, "memberSyntaxSortOrder": ["all", "single", "multiple", "none"]}]
+    "sort-imports-es6-autofix/sort-imports-es6": [2, {"ignoreCase": false, "ignoreMemberSort": false, "memberSyntaxSortOrder": ["all", "single", "multiple", "none"]}],
+
+    "jsx-a11y/anchor-is-valid": "off" // Next does some magic with links
   }
 }

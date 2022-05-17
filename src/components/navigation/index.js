@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Disclosure } from '@headlessui/react'
 import { MobileButton } from './mobile-button'
 import { MobileDropdown } from './mobile-dropdown'
@@ -14,7 +15,9 @@ const Navigation = () => {
               <div className={'flex items-center justify-between h-16 px-4 sm:px-0'}>
                 <div className={'flex items-center'}>
                   <div className={'flex-shrink-0'}>
-                    <NhlLogo height={40} width={40} />
+                    <Link href={'/'}>
+                      <a><NhlLogo height={40} width={40} /></a>
+                    </Link>
                   </div>
                 </div>
                 <div>
