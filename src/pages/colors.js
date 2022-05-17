@@ -15,9 +15,9 @@ const ColorsPage = () => {
             <span>{team.name}</span>
           </div>
           <div className={'flex flex-row'}>
-            <Cell color={`${team.cssName}-primary border-l`} text={'win'} />
-            <Cell color={`${team.cssName}-secondary border-x`} text={'otl'} />
-            <Cell color={`${team.cssName}-tertiary border-r`} text={'loss'} />
+            <Cell color={`${team.slug}-primary border-l`} text={'win'} />
+            <Cell color={`${team.slug}-secondary border-x`} text={'otl'} />
+            <Cell color={`${team.slug}-tertiary border-r`} text={'loss'} />
           </div>
         </div>
       ))}
