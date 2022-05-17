@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 
@@ -13,16 +14,15 @@ const NavDropdown = ({ teams }) => {
       leaveTo={'transform opacity-0 scale-95'}
     >
       <Menu.Items className={'origin-top-right absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none'}>
-        {teams.map(({ name, nhlId, Logo }) => (
+        {teams.map(({ name, nhlId, Logo, slug }) => (
           <Menu.Item key={nhlId}>
             {({ active }) => (
-              <a
-                className={`${active ? 'bg-neutral-100 text-neutral-900' : 'text-neutral-700'} group flex items-center px-4 py-2`}
-                href={'/'}
-              >
-                <Logo height={30} width={30} />
-                <span className={'ml-3'}>{name}</span>
-              </a>
+              <Link href={`/teams/${slug}`}>
+                <a className={`${active ? 'bg-neutral-100 text-neutral-900' : 'text-neutral-700'} group flex items-center px-4 py-2`}>
+                  <Logo height={30} width={30} />
+                  <span className={'ml-3'}>{name}</span>
+                </a>
+              </Link>
             )}
           </Menu.Item>
         ))}
