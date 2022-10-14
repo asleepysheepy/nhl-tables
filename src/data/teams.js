@@ -4,7 +4,7 @@ import { divisions } from './divisions'
 
 const anaheimDucks = {
   nhlId: 24,
-  abbrevation: 'ANA',
+  abbreviation: 'ANA',
   conference: conferences.western,
   division: divisions.pacific,
   Logo: logos.AnaheimDucksLogo,
@@ -14,7 +14,7 @@ const anaheimDucks = {
 
 const arizonaCoyotes = {
   nhlId: 53,
-  abbrevation: 'ARI',
+  abbreviation: 'ARI',
   conference: conferences.western,
   division: divisions.central,
   Logo: logos.ArizonaCoyotesLogo,
@@ -24,7 +24,7 @@ const arizonaCoyotes = {
 
 const bostonBruins = {
   nhlId: 6,
-  abbrevation: 'BOS',
+  abbreviation: 'BOS',
   conference: conferences.eastern,
   division: divisions.atlantic,
   Logo: logos.BostonBruinsLogo,
@@ -34,7 +34,7 @@ const bostonBruins = {
 
 const buffaloSabres = {
   nhlId: 7,
-  abbrevation: 'BUF',
+  abbreviation: 'BUF',
   conference: conferences.eastern,
   division: divisions.atlantic,
   Logo: logos.BuffaloSabresLogo,
@@ -44,7 +44,7 @@ const buffaloSabres = {
 
 const calgaryFlames = {
   nhlId: 20,
-  abbrevation: 'CGY',
+  abbreviation: 'CGY',
   conference: conferences.western,
   division: divisions.pacific,
   Logo: logos.CalgaryFlamesLogo,
@@ -54,7 +54,7 @@ const calgaryFlames = {
 
 const carolinaHurricanes = {
   nhlId: 12,
-  abbrevation: 'CAR',
+  abbreviation: 'CAR',
   conference: conferences.eastern,
   division: divisions.metropolitan,
   Logo: logos.CarolinaHurricanesLogo,
@@ -64,7 +64,7 @@ const carolinaHurricanes = {
 
 const chicagoBlackhawks = {
   nhlId: 16,
-  abbrevation: 'CHI',
+  abbreviation: 'CHI',
   conference: conferences.western,
   division: divisions.central,
   Logo: logos.ChicagoBlackhawksLogo,
@@ -74,7 +74,7 @@ const chicagoBlackhawks = {
 
 const coloradoAvalanche = {
   nhlId: 21,
-  abbrevation: 'COL',
+  abbreviation: 'COL',
   conference: conferences.western,
   division: divisions.central,
   Logo: logos.ColoradoAvalancheLogo,
@@ -84,7 +84,7 @@ const coloradoAvalanche = {
 
 const columbusBlueJackets = {
   nhlId: 29,
-  abbrevation: 'CBJ',
+  abbreviation: 'CBJ',
   conference: conferences.eastern,
   division: divisions.metropolitan,
   Logo: logos.ColumbusBlueJacketsLogo,
@@ -94,7 +94,7 @@ const columbusBlueJackets = {
 
 const dallasStars = {
   nhlId: 25,
-  abbrevation: 'DAL',
+  abbreviation: 'DAL',
   conference: conferences.western,
   division: divisions.central,
   Logo: logos.DallasStarsLogo,
@@ -104,7 +104,7 @@ const dallasStars = {
 
 const detroitRedWings = {
   nhlId: 17,
-  abbrevation: 'DET',
+  abbreviation: 'DET',
   conference: conferences.eastern,
   division: divisions.atlantic,
   Logo: logos.DetroitRedWingsLogo,
@@ -114,7 +114,7 @@ const detroitRedWings = {
 
 const edmontonOilers = {
   nhlId: 22,
-  abbrevation: 'EDM',
+  abbreviation: 'EDM',
   conference: conferences.western,
   division: divisions.pacific,
   Logo: logos.EdmontonOilersLogo,
@@ -124,7 +124,7 @@ const edmontonOilers = {
 
 const floridaPanthers = {
   nhlId: 13,
-  abbrevation: 'FLA',
+  abbreviation: 'FLA',
   conference: conferences.eastern,
   division: divisions.atlantic,
   Logo: logos.FloridaPanthersLogo,
@@ -134,7 +134,7 @@ const floridaPanthers = {
 
 const losAngelesKings = {
   nhlId: 26,
-  abbrevation: 'LAK',
+  abbreviation: 'LAK',
   conference: conferences.western,
   division: divisions.pacific,
   Logo: logos.LosAngelesKingsLogo,
@@ -144,7 +144,7 @@ const losAngelesKings = {
 
 const minnesotaWild = {
   nhlId: 30,
-  abbrevation: 'MIN',
+  abbreviation: 'MIN',
   conference: conferences.western,
   division: divisions.central,
   Logo: logos.MinnesotaWildLogo,
@@ -154,7 +154,7 @@ const minnesotaWild = {
 
 const montrealCanadiens = {
   nhlId: 8,
-  abbrevation: 'MTL',
+  abbreviation: 'MTL',
   conference: conferences.eastern,
   division: divisions.atlantic,
   Logo: logos.MontrealCanadiensLogo,
@@ -164,7 +164,7 @@ const montrealCanadiens = {
 
 const nashvillePredators = {
   nhlId: 18,
-  abbrevation: 'NSH',
+  abbreviation: 'NSH',
   conference: conferences.western,
   division: divisions.central,
   Logo: logos.NashvillePredatorsLogo,
@@ -174,7 +174,7 @@ const nashvillePredators = {
 
 const newJerseyDevils = {
   nhlId: 1,
-  abbrevation: 'NJD',
+  abbreviation: 'NJD',
   conference: conferences.eastern,
   division: divisions.metropolitan,
   Logo: logos.NewJerseyDevilsLogo,
@@ -184,7 +184,7 @@ const newJerseyDevils = {
 
 const newYorkIslanders = {
   nhlId: 2,
-  abbrevation: 'NYI',
+  abbreviation: 'NYI',
   conference: conferences.eastern,
   division: divisions.metropolitan,
   Logo: logos.NewYorkIslandersLogo,
@@ -194,7 +194,7 @@ const newYorkIslanders = {
 
 const newYorkRangers = {
   nhlId: 3,
-  abbrevation: 'NYR',
+  abbreviation: 'NYR',
   conference: conferences.eastern,
   division: divisions.metropolitan,
   Logo: logos.NewYorkRangersLogo,
@@ -204,7 +204,7 @@ const newYorkRangers = {
 
 const ottawaSenators = {
   nhlId: 9,
-  abbrevation: 'OTT',
+  abbreviation: 'OTT',
   conference: conferences.eastern,
   division: divisions.atlantic,
   Logo: logos.OttawaSenatorsLogo,
@@ -214,7 +214,7 @@ const ottawaSenators = {
 
 const philadelphiaFlyers = {
   nhlId: 4,
-  abbrevation: 'PHI',
+  abbreviation: 'PHI',
   conference: conferences.eastern,
   division: divisions.metropolitan,
   Logo: logos.PhiladelphiaFlyersLogo,
@@ -224,7 +224,7 @@ const philadelphiaFlyers = {
 
 const pittsburghPenguins = {
   nhlId: 5,
-  abbrevation: 'PIT',
+  abbreviation: 'PIT',
   conference: conferences.eastern,
   division: divisions.metropolitan,
   Logo: logos.PittsburghPenguinsLogo,
@@ -234,7 +234,7 @@ const pittsburghPenguins = {
 
 const sanJoseSharks = {
   nhlId: 28,
-  abbrevation: 'SJS',
+  abbreviation: 'SJS',
   conference: conferences.western,
   division: divisions.pacific,
   Logo: logos.SanJoseSharksLogo,
@@ -244,7 +244,7 @@ const sanJoseSharks = {
 
 const seattleKraken = {
   nhlId: 55,
-  abbrevation: 'SEA',
+  abbreviation: 'SEA',
   conference: conferences.western,
   division: divisions.pacific,
   Logo: logos.SeattleKrakenLogo,
@@ -254,7 +254,7 @@ const seattleKraken = {
 
 const stLouisBlues = {
   nhlId: 19,
-  abbrevation: 'STL',
+  abbreviation: 'STL',
   conference: conferences.western,
   division: divisions.central,
   Logo: logos.StLouisBluesLogo,
@@ -264,7 +264,7 @@ const stLouisBlues = {
 
 const tampaBayLightning = {
   nhlId: 14,
-  abbrevation: 'TBL',
+  abbreviation: 'TBL',
   conference: conferences.eastern,
   division: divisions.atlantic,
   Logo: logos.TampaBayLightningLogo,
@@ -274,7 +274,7 @@ const tampaBayLightning = {
 
 const torontoMapleLeafs = {
   nhlId: 10,
-  abbrevation: 'TOR',
+  abbreviation: 'TOR',
   conference: conferences.eastern,
   division: divisions.atlantic,
   Logo: logos.TorontoMapleLeafsLogo,
@@ -284,7 +284,7 @@ const torontoMapleLeafs = {
 
 const vancouverCanucks = {
   nhlId: 23,
-  abbrevation: 'VAN',
+  abbreviation: 'VAN',
   conference: conferences.western,
   division: divisions.pacific,
   Logo: logos.VancouverCanucksLogo,
@@ -294,7 +294,7 @@ const vancouverCanucks = {
 
 const vegasGoldenKnights = {
   nhlId: 54,
-  abbrevation: 'VGK',
+  abbreviation: 'VGK',
   conference: conferences.western,
   division: divisions.pacific,
   Logo: logos.VegasGoldenKnightsLogo,
@@ -304,7 +304,7 @@ const vegasGoldenKnights = {
 
 const washingtonCapitals = {
   nhlId: 15,
-  abbrevation: 'WSH',
+  abbreviation: 'WSH',
   conference: conferences.eastern,
   division: divisions.metropolitan,
   Logo: logos.WashingtonCapitalsLogo,
@@ -314,7 +314,7 @@ const washingtonCapitals = {
 
 const winnipegJets = {
   nhlId: 52,
-  abbrevation: 'WPG',
+  abbreviation: 'WPG',
   conference: conferences.western,
   division: divisions.central,
   Logo: logos.WinnipegJetsLogo,
