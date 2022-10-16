@@ -21,7 +21,7 @@ export const TeamHeader = () => {
 
   return (
     <header className={'pb-5 pt-3'}>
-      <div className={'flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
+      <div className={'flex flex-col md:flex-row justify-between items-left md:items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
         <div className={'my-4'}>
           <Image
             height={150}
@@ -30,20 +30,18 @@ export const TeamHeader = () => {
           />
         </div>
         <div>
-          <h1 className={'text-5xl font-bold'}>{team.getName()}</h1>
+          <h1 className={'text-5xl font-bold mb-5 md:mb-0'}>{team.getName()}</h1>
         </div>
         <div>
-          <div>
-            <p className={'text-lg'}>
-              <span className={'font-bold'}>Games Played:</span> {teamStats.getGamesPlayed()}
-            </p>
-            <p className={'text-lg'}>
-              <span className={'font-bold'}>Record:</span> {teamStats.getRecord()}
-            </p>
-            <p className={'text-lg'}>
-              <span className={'font-bold'}>Points Percentage:</span> {teamStats.getPointsPercentage()}%
-            </p>
-          </div>
+          <p className={'text-lg'}>
+            <span className={'font-bold'}>Games Played:</span> {teamStats.getGamesPlayed()}
+          </p>
+          <p className={'text-lg'}>
+            <span className={'font-bold'}>Record:</span> {teamStats.getRecord()}
+          </p>
+          <p className={'text-lg'}>
+            <span className={'font-bold'}>Points Percentage:</span> {teamStats.getPointsPercentage()}%
+          </p>
         </div>
       </div>
     </header>

@@ -42,9 +42,11 @@ export const ScheduleTableRow = ({ teamId, games }) => {
 
   return (
     <tr className={'divide-x divide-gray-300'}>
-      <td className={'text-sm font-medium text-gray-900 group flex items-center px-4 py-2'}>
-        <Image height={30} src={`/img/logos/${team.getSlug()}.svg`} width={30} />
-        <span className={'ml-3'}>{team.getName()}</span>
+      <td className={'text-sm font-medium text-gray-900 group flex items-center py-2'}>
+        <div className={'hidden md:block'}>
+          <Image height={30} src={`/img/logos/${team.getSlug()}.svg`} width={30} />
+        </div>
+        <span className={'ml-0 md:ml-3'}>{team.getName()}</span>
       </td>
       <GameCell game={games[0]} team={team} />
       <GameCell game={games[1]} team={team} />
