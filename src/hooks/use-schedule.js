@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 import { Game } from '../models'
 
-const getScheduleUrl = (team, season = '20222023') => {
+const getScheduleUrl = (team, season) => {
   const baseUrl = 'https://statsapi.web.nhl.com/api/v1/schedule'
   const teamParam = `teamId=${team.getId()}`
   const seasonParam = `season=${season}`
@@ -11,8 +11,8 @@ const getScheduleUrl = (team, season = '20222023') => {
   return `${baseUrl}?${teamParam}&${seasonParam}&${expandParam}&${typeParam}`
 }
 
-const useSchedule = (team) => {
-  const teamScheduleUrl = team ? getScheduleUrl(team) : null
+const useSchedule = (team, season) => {
+  const teamScheduleUrl = team ? getScheduleUrl(team, season) : null
   const { data } = useSWR(teamScheduleUrl)
 
   if (!data) { return }

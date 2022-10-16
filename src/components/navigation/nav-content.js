@@ -1,6 +1,6 @@
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import { Menu } from '@headlessui/react'
-import { NavDropdown } from './nav-dropdpwn'
+import { NavDropdown } from './nav-dropdown'
 import { Team } from '../../models'
 import { divisions } from '../../data'
 
