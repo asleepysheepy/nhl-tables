@@ -1,4 +1,4 @@
-import { teams } from '../data'
+import { Team } from '../models'
 
 const Cell = ({ color, text }) => (
   <p className={`${color} w-16 text-center border-y border-neutral-400`}>
@@ -9,15 +9,15 @@ const Cell = ({ color, text }) => (
 const ColorsPage = () => {
   return (
     <div className={'flex flex-wrap'}>
-      {teams.all.map((team) => (
-        <div className={'m-3'} key={team.nhlId}>
+      {Team.getTeams().map((team) => (
+        <div className={'m-3'} key={team.getId()}>
           <div>
-            <span>{team.name}</span>
+            <span>{team.getName()}</span>
           </div>
           <div className={'flex flex-row'}>
-            <Cell color={`${team.slug}-primary border-l`} text={'win'} />
-            <Cell color={`${team.slug}-secondary border-x`} text={'otl'} />
-            <Cell color={`${team.slug}-tertiary border-r`} text={'loss'} />
+            <Cell color={`${team.getSlug()}-primary border-l`} text={'win'} />
+            <Cell color={`${team.getSlug()}-secondary border-x`} text={'otl'} />
+            <Cell color={`${team.getSlug()}-tertiary border-r`} text={'loss'} />
           </div>
         </div>
       ))}

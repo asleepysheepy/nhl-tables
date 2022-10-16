@@ -1,10 +1,11 @@
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { Menu } from '@headlessui/react'
 import { NavDropdown } from './nav-dropdpwn'
-import { divisions, teams } from '../../data'
+import { Team } from '../../models'
+import { divisions } from '../../data'
 
 const getTeamsForDivision = (division) => {
-  const teamsInDivision = teams.all.filter((team) => team.division.nhlId === division.nhlId)
+  const teamsInDivision = Team.getTeams().filter((team) => team.getDivision().nhlId === division.nhlId)
   return teamsInDivision
 }
 

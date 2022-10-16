@@ -1,9 +1,9 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { Disclosure } from '@headlessui/react'
 import { MobileButton } from './mobile-button'
 import { MobileDropdown } from './mobile-dropdown'
 import { NavContent } from './nav-content'
-import { NhlLogo } from '../logos'
 
 const Navigation = () => {
   return (
@@ -15,7 +15,7 @@ const Navigation = () => {
               <div className={'flex items-center'}>
                 <div className={'flex-shrink-0'}>
                   <Link href={'/'}>
-                    <a><NhlLogo height={40} width={40} /></a>
+                    <a><Image height={40} src={'/img/logos/nhl.svg'} width={40} /></a>
                   </Link>
                 </div>
               </div>
