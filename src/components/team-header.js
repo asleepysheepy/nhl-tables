@@ -1,0 +1,51 @@
+import Image from 'next/image'
+import { useTeam, useTeamStats } from '../hooks'
+
+export const TeamHeader = () => {
+  const team = useTeam()
+  const teamStats = useTeamStats()
+
+  if (!team) {
+    return (
+      <header className={'pb-10 pt-3'}>
+        <div className={'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
+          <h1 className={'text-3xl font-bold'}>Hockey Stuff</h1>
+        </div>
+      </header>
+    )
+  }
+
+  if (!teamStats) {
+    return null
+  }
+
+  return (
+    <header className={'pb-5 pt-3'}>
+      <div className={'flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
+        <div className={'my-4'}>
+          <Image
+            height={150}
+            src={`/img/logos/${team.getSlug()}.svg`}
+            width={150}
+          />
+        </div>
+        <div>
+          <h1 className={'text-5xl font-bold'}>{team.getName()}</h1>
+        </div>
+        <div>
+          <div>
+            <p className={'text-lg'}>
+              <span className={'font-bold'}>Games Played:</span> {teamStats.getGamesPlayed()}
+            </p>
+            <p className={'text-lg'}>
+              <span className={'font-bold'}>Record:</span> {teamStats.getRecord()}
+            </p>
+            <p className={'text-lg'}>
+              <span className={'font-bold'}>Points Percentage:</span> {teamStats.getPointsPercentage()}%
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+  )
+}
