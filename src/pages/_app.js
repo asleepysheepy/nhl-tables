@@ -1,6 +1,6 @@
 import '../../styles/globals.css'
 
-import { Layout } from '../components/layout'
+import { Layout } from '../components'
 import { SWRConfig } from 'swr'
 
 const App = ({ Component, pageProps }) => {

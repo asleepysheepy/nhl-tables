@@ -1,7 +1,5 @@
 import Head from 'next/head'
-import { ScheduleTable } from '../../components/schedule-table'
-import { SelectInput } from '../../components/select-input'
-import { TeamColorKey } from '../../components/team-color-key'
+import { ScheduleTable, SelectInput, TeamColorKey } from '../../components'
 import { useSchedule, useTeam } from '../../hooks'
 import { useState } from 'react'
 

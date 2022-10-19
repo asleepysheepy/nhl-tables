@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Team } from '../models'
-import { TeamColorKey } from '../components/team-color-key'
+import { TeamColorKey } from '../components'
 
 const ColorsPage = () => {
   return (
