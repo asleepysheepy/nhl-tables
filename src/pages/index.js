@@ -1,13 +1,34 @@
 import Head from 'next/head'
+import Image from 'next/image'
+import { Link } from '../components'
+import { Team } from '../models'
 
 const Home = () => {
   return (
-    <div className={'border-4 border-dashed border-neutral-200 rounded-lg h-96'}>
+    <>
       <Head>
         <title>Help! idk what to put here.</title>
       </Head>
-      <h1>Hello World</h1>
-    </div>
+      <div className={'mb-6'}>
+        <p className={'text-2xl'}>
+          Select a team to see how they&apos;re doing against every other team.
+        </p>
+      </div>
+      <div className={' grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4'}>
+        {Team.getTeams().map((team) => (
+          <div className={'m-3'} key={team.getId()}>
+            <Link className={'flex flex-col items-center text-center text-lg font-semibold hover:bg-gray-100 p-4'} href={`/teams/${team.getSlug()}`}>
+              <Image
+                height={75}
+                src={`/img/logos/${team.getSlug()}.svg`}
+                width={75}
+              />
+              {team.getName()}
+            </Link>
+          </div>
+        ))}
+      </div>
+    </>
   )
 }
 
