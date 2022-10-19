@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { useTeam, useTeamStats } from '../hooks'
 
 export const TeamHeader = () => {
-  const team = useTeam()
+  const { team } = useTeam()
   const teamStats = useTeamStats()
 
   if (!team) {

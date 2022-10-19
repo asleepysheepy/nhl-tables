@@ -5,7 +5,7 @@ import { MobileButton } from './mobile-button'
 import { MobileDropdown } from './mobile-dropdown'
 import { NavContent } from './nav-content'
 
-const Navigation = () => {
+export const Navigation = () => {
   return (
     <Disclosure as={'nav'}>
       {({ open }) => (
@@ -34,5 +34,3 @@ const Navigation = () => {
     </Disclosure>
   )
 }
-
-export { Navigation }

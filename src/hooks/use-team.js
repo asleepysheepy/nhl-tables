@@ -1,11 +1,14 @@
 import { Team } from '../models'
 import { useRouter } from 'next/router'
 
-const useTeam = () => {
+export const useTeam = () => {
   const router = useRouter()
   const { team: teamSlug } = router.query
 
-  return Team.getTeamBySlug(teamSlug)
-}
+  const team = Team.getTeamBySlug(teamSlug)
 
-export { useTeam }
+  return {
+    team,
+    teamClassName: team ? team.getSlug() : 'neutral',
+  }
+}

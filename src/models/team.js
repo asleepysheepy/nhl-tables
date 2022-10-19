@@ -1,6 +1,6 @@
 import { teamsData } from '../data'
 
-class Team {
+export class Team {
   constructor(teamData) {
     this._teamData = teamData
   }
@@ -42,5 +42,3 @@ class Team {
     return Team.getTeams().find((team) => team.getSlug() === slug)
   }
 }
-
-export { Team }

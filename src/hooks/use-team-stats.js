@@ -3,7 +3,7 @@ import { TeamStats } from '../models'
 import { useTeam } from './use-team'
 
 export const useTeamStats = () => {
-  const team = useTeam()
+  const { team } = useTeam()
   const { data } = useSWR(team ? `https://statsapi.web.nhl.com/api/v1/teams/${team.getId()}?expand=team.stats` : null)
   if (!data) { return }
 

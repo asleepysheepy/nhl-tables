@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.focusable {
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-500 focus:ring-gray-200
+}
+
+.neutral-primary {
+  @apply bg-black text-white;
+}
+
 .anaheim-ducks-primary {
   background-color: #FC4C02;
   color: #FFFFFF;

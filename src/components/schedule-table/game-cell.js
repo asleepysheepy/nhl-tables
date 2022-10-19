@@ -1,26 +1,27 @@
-export const GameCell = ({ game, team }) => {
+import { useTeam } from '../../hooks'
+
+export const GameCell = ({ game }) => {
+  const { team, teamClassName } = useTeam()
+
   if (!game) {
     return <td className={'text-center text-sm'}> - </td>
   }
 
-  const pageTeam = game.getOpposingTeam(team)
-
-  const teamClassPrefix = pageTeam.getSlug()
   let cellClass, gameOutcome
-  if (game.wasWinFor(pageTeam)) {
-    cellClass = `${teamClassPrefix}-primary`
+  if (game.wasWinFor(team)) {
+    cellClass = `${teamClassName}-primary`
     gameOutcome = 'Win'
-  } else if (game.wasOvertimeLossFor(pageTeam) || game.wasShootoutLossFor(pageTeam)) {
-    cellClass = `${teamClassPrefix}-secondary`
+  } else if (game.wasOvertimeLossFor(team) || game.wasShootoutLossFor(team)) {
+    cellClass = `${teamClassName}-secondary`
     gameOutcome = 'OTL'
   } else if (game.isFinal()) {
-    cellClass = `${teamClassPrefix}-tertiary`
+    cellClass = `${teamClassName}-tertiary`
     gameOutcome = 'Loss'
   }
 
   return (
     <td className={`${cellClass} text-center text-xs`}>
-      <div className={'py-0'}>{game.isHomeTeam(pageTeam) ? 'Home' : 'Away'}</div>
+      <div className={'py-0'}>{game.isHomeTeam(team) ? 'Home' : 'Away'}</div>
       <div>{gameOutcome}</div>
       <div className={'py-0'}>{game.isFinal() ? game.getFinalScore() : game.getFormattedDate()}</div>
     </td>

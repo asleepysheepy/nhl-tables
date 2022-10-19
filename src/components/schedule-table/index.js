@@ -1,7 +1,7 @@
 import { ScheduleTableRow } from './schedule-table-row'
 import { Team } from '../../models'
 
-const ScheduleTable = ({ gamesByTeam }) => {
+export const ScheduleTable = ({ gamesByTeam }) => {
   const sortedTeams = Object.keys(gamesByTeam).sort((a, b) => {
     const aTeam = Team.getTeamById(a)
     const bTeam = Team.getTeamById(b)
@@ -37,5 +37,3 @@ const ScheduleTable = ({ gamesByTeam }) => {
     </table>
   )
 }
-
-export { ScheduleTable }

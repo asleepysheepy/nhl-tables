@@ -32,10 +32,6 @@ export const ScheduleTableRow = ({ teamId, games }) => {
   let pointsPercentage
   if (possiblePoints === 0) {
     pointsPercentage = 0
-  } else if (totalPoints / possiblePoints === 1) {
-    pointsPercentage = 100
-  } else if (totalPoints / possiblePoints === 0) {
-    pointsPercentage = 0
   } else {
     pointsPercentage = Math.round(100 * (totalPoints / possiblePoints))
   }
