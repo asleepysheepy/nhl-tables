@@ -4,6 +4,7 @@ import { useSchedule, useTeam } from '../../hooks'
 import { useState } from 'react'
 
 const seasons = [
+  {key: '20232024', name: '2023 - 2024'},
   {key: '20222023', name: '2022 - 2023'},
   {key: '20212022', name: '2021 - 2022'},
 ]
