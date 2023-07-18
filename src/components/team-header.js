@@ -9,7 +9,7 @@ export const TeamHeader = () => {
     return (
       <header className={'pb-10 pt-3'}>
         <div className={'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
-          <h1 className={'text-3xl font-bold'}>Hockey Stuff</h1>
+          <h1 className={'text-3xl font-bold'}>NHL Schedule Tables</h1>
         </div>
       </header>
     )

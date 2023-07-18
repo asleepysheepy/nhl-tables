@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Help! idk what to put here.</title>
+        <title>NHL Schedule Tables</title>
       </Head>
       <div className={'mb-6'}>
         <p className={'text-2xl'}>
