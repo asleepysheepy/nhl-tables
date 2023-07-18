@@ -1,9 +1,9 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { Team } from '../../models'
+import { TeamLogo } from '../team-logo'
 import { divisions } from '../../data'
 
 const getTeamsForDivision = (division) => {
@@ -39,12 +39,7 @@ export const NavContent = () => {
                     className={'ui-active:bg-gray-200 hover:bg-gray-200 text-gray-900 group flex items-center px-4 py-2'}
                     href={`/teams/${team.getSlug()}`}
                   >
-                    <Image
-                      alt={`${team.getName()} Logo`}
-                      height={30}
-                      src={`/img/logos/${team.getSlug()}.svg`}
-                      width={30}
-                    />
+                    <TeamLogo size={30} team={team} />
                     <span className={'ml-3'}>{team.getName()}</span>
                   </Link>
                 </Menu.Item>

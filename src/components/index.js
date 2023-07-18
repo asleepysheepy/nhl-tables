@@ -1,5 +1,7 @@
 export * from './layout'
 export * from './navigation'
+export * from './nhl-logo'
 export * from './schedule-table'
 export * from './select-input'
 export * from './team-header'
+export * from './team-logo'

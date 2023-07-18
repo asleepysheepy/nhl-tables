@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import { GameCell } from './game-cell'
 import { Team } from '../../models'
+import { TeamLogo } from '../team-logo'
 
 export const ScheduleTableRow = ({ teamId, games }) => {
   const team = Team.getTeamById(teamId)
@@ -40,12 +40,7 @@ export const ScheduleTableRow = ({ teamId, games }) => {
     <tr className={'divide-x divide-gray-300'}>
       <td className={'text-sm font-medium text-gray-900 group flex items-center py-2'}>
         <div className={'hidden md:block'}>
-          <Image
-            alt={`${team.getName()} Logo`}
-            height={30}
-            src={`/img/logos/${team.getSlug()}.svg`}
-            width={30}
-          />
+          <TeamLogo size={30} team={team} />
         </div>
         <span className={'ml-0 md:ml-3'}>{team.getName()}</span>
       </td>

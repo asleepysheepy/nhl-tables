@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { TeamLogo } from './team-logo'
 import { useTeam, useTeamStats } from '../hooks'
 
 export const TeamHeader = () => {
@@ -23,12 +23,7 @@ export const TeamHeader = () => {
     <header className={'pb-5 pt-3'}>
       <div className={'flex flex-col md:flex-row justify-between items-left md:items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
         <div className={'my-4'}>
-          <Image
-            alt={`${team.getName()} Logo`}
-            height={150}
-            src={`/img/logos/${team.getSlug()}.svg`}
-            width={150}
-          />
+          <TeamLogo size={150} team={team} />
         </div>
         <div>
           <h1 className={'text-5xl font-bold mb-5 md:mb-0'}>{team.getName()}</h1>
