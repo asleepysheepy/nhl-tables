@@ -1,6 +1,6 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Disclosure } from '@headlessui/react'
-import { Link } from '../link'
 import { Team } from '../../models'
 
 export const MobileDropdown = () => {
@@ -14,7 +14,12 @@ export const MobileDropdown = () => {
             href={`/teams/${team.getSlug()}`}
             key={team.getId()}
           >
-            <Image height={30} src={`/img/logos/${team.getSlug()}.svg`} width={30} />
+            <Image
+              alt={`${team.getName()} Logo`}
+              height={30}
+              src={`/img/logos/${team.getSlug()}.svg`}
+              width={30}
+            />
             <span className={'ml-3'}>{team.getName()}</span>
           </Disclosure.Button>
         ))}

@@ -24,6 +24,7 @@ export const TeamHeader = () => {
       <div className={'flex flex-col md:flex-row justify-between items-left md:items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
         <div className={'my-4'}>
           <Image
+            alt={`${team.getName()} Logo`}
             height={150}
             src={`/img/logos/${team.getSlug()}.svg`}
             width={150}

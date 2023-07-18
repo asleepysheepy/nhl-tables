@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Link } from '../components'
+import Link from 'next/link'
 import { Team } from '../models'
 
 const Home = () => {
@@ -19,6 +19,7 @@ const Home = () => {
           <div className={'m-3'} key={team.getId()}>
             <Link className={'flex flex-col items-center text-center text-lg font-semibold hover:bg-gray-100 p-4'} href={`/teams/${team.getSlug()}`}>
               <Image
+                alt={`${team.getName()} logo`}
                 height={75}
                 src={`/img/logos/${team.getSlug()}.svg`}
                 width={75}

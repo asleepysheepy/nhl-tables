@@ -1,6 +1,6 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Disclosure } from '@headlessui/react'
-import { Link } from '../link'
 import { MobileButton } from './mobile-button'
 import { MobileDropdown } from './mobile-dropdown'
 import { NavContent } from './nav-content'
@@ -16,11 +16,21 @@ export const Navigation = () => {
                 <div className={'flex-shrink-0'}>
                   {open ? (
                     <Disclosure.Button as={Link} href={'/'}>
-                      <Image height={40} src={'/img/logos/nhl.svg'} width={40} />
+                      <Image
+                        alt={'NHL Logo'}
+                        height={40}
+                        src={'/img/logos/nhl.svg'}
+                        width={40}
+                      />
                     </Disclosure.Button>
                   ) : (
                     <Link href={'/'}>
-                      <Image height={40} src={'/img/logos/nhl.svg'} width={40} />
+                      <Image
+                        alt={'NHL Logo'}
+                        height={40}
+                        src={'/img/logos/nhl.svg'}
+                        width={40}
+                      />
                     </Link>
                   )}
                 </div>

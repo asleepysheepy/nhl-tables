@@ -40,7 +40,12 @@ export const ScheduleTableRow = ({ teamId, games }) => {
     <tr className={'divide-x divide-gray-300'}>
       <td className={'text-sm font-medium text-gray-900 group flex items-center py-2'}>
         <div className={'hidden md:block'}>
-          <Image height={30} src={`/img/logos/${team.getSlug()}.svg`} width={30} />
+          <Image
+            alt={`${team.getName()} Logo`}
+            height={30}
+            src={`/img/logos/${team.getSlug()}.svg`}
+            width={30}
+          />
         </div>
         <span className={'ml-0 md:ml-3'}>{team.getName()}</span>
       </td>
