@@ -7,7 +7,7 @@ export const Layout = ({ children }) => {
 
   return (
     <div className={'min-h-full'}>
-      <div className={`${teamClassName}-primary pb-32`}>
+      <div className={`${teamClassName} text-white pb-32`}>
         <Navigation />
         <TeamHeader />
       </div>

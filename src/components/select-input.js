@@ -1,11 +1,8 @@
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/solid'
 import { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
-import { useTeam } from '../hooks'
 
 export const SelectInput = ({ onChange, selected, options }) => {
-  const { teamClassName } = useTeam()
-
   return (
     <Listbox onChange={onChange} value={selected}>
       {({ open }) => (
@@ -29,13 +26,13 @@ export const SelectInput = ({ onChange, selected, options }) => {
               <Listbox.Options className={'absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'}>
                 {options.map((option) => (
                   <Listbox.Option
-                    className={({ active }) => `${active ? `${teamClassName}-primary` : 'text-gray-900'} relative cursor-default select-none py-2 pl-3 pr-9`}
+                    className={'ui-active:bg-gray-200 hover:bg-gray-200 text-gray-900 group flex items-center relative select-none px-4 py-2'}
                     key={option.key}
                     value={option}
                   >
                     {({ selected: isSelected }) => (
                       <>
-                        <span className={`${isSelected ? 'font-semibold' : 'font-normal'} block truncate`}>
+                        <span className={'ui-selected:font-semibold ui-not-selected:font-normal block truncate'}>
                           {option.name}
                         </span>
 

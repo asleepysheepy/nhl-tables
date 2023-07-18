@@ -1,7 +1,7 @@
 import { useTeam } from '../../hooks'
 
 export const GameCell = ({ game }) => {
-  const { team, teamClassName } = useTeam()
+  const { team } = useTeam()
 
   if (!game) {
     return <td className={'text-center text-sm'}> - </td>
@@ -9,13 +9,13 @@ export const GameCell = ({ game }) => {
 
   let cellClass, gameOutcome
   if (game.wasWinFor(team)) {
-    cellClass = `${teamClassName}-primary`
+    cellClass = 'bg-green-100 text-green-900'
     gameOutcome = 'Win'
   } else if (game.wasOvertimeLossFor(team) || game.wasShootoutLossFor(team)) {
-    cellClass = `${teamClassName}-secondary`
+    cellClass = 'bg-yellow-100 text-yellow-900'
     gameOutcome = 'OTL'
   } else if (game.isFinal()) {
-    cellClass = `${teamClassName}-tertiary`
+    cellClass = 'bg-red-100 text-red-900'
     gameOutcome = 'Loss'
   }
 

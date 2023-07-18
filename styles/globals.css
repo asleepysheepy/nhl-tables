@@ -3,489 +3,137 @@
 @tailwind utilities;
 
 .focusable {
-  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-500 focus:ring-gray-200
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-500 focus:ring-gray-200;
 }
 
-.neutral-primary {
-  @apply bg-black text-white;
+.nhl {
+  background-color: #000000;
 }
 
-.anaheim-ducks-primary {
-  background-color: #FC4C02;
-  color: #FFFFFF;
+.anaheim-ducks {
+  background-color: #ef5223;
 }
 
-.anaheim-ducks-secondary {
-  background-color: #B9975B;
-  color: #FFFFFF;
+.arizona-coyotes {
+  background-color: #8b2a43;
 }
 
-.anaheim-ducks-tertiary {
-  background-color: #010101;
-  color: #FFFFFF;
+.boston-bruins {
+  background-color: #231f20;
 }
 
-.arizona-coyotes-primary {
-  background-color: #010101;
-  color: #FFFFFF;
+.buffalo-sabres {
+  background-color: rgb(0, 48, 135);
 }
 
-.arizona-coyotes-secondary {
-  background-color: #154734;
-  color: #FFFFFF;
+.calgary-flames {
+  background-color: #e03a3e;
 }
 
-.arizona-coyotes-tertiary {
-  background-color: #6F263D;
-  color: #FFFFFF;
+.carolina-hurricanes {
+  background-color: #e13a3e;
 }
 
-.boston-bruins-primary {
-  background-color: #010101;
-  color: #FFFFFF;
+.chicago-blackhawks {
+  background-color: #e32739;
 }
 
-.boston-bruins-secondary {
-  background-color: #FFB81C;
-  color: #010101;
+.colorado-avalanche {
+  background-color: #8b2942;
 }
 
-.boston-bruins-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
+.columbus-blue-jackets {
+  background-color: #00285d;
 }
 
-.buffalo-sabres-primary {
-  background-color: #003087;
-  color: #FFFFFF;
+.dallas-stars {
+  background-color: #0b714c;
 }
 
-.buffalo-sabres-secondary {
-  background-color: #FFB81C;
-  color: #010101;
+.detroit-red-wings {
+  background-color: #ec2024;
 }
 
-.buffalo-sabres-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
+.edmonton-oilers {
+  background-color: #e56b1f;
 }
 
-.calgary-flames-primary {
-  background-color: #C8102E;
-  color: #FFFFFF;
+.florida-panthers {
+  background-color: #ce1d26;
 }
 
-.calgary-flames-secondary {
-  background-color: #F1BE48;
-  color: #010101;
+.los-angeles-kings {
+  background-color: #000000;
 }
 
-.calgary-flames-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
+.minnesota-wild {
+  background-color: #015836;
 }
 
-.carolina-hurricanes-primary {
-  background-color: #C8102E;
-  color: #FFFFFF;
+.montreal-canadiens {
+  background-color: #be2f37;
 }
 
-.carolina-hurricanes-secondary {
-  background-color: #010101;
-  color: #FFFFFF;
+.nashville-predators {
+  background-color: #002d62;
 }
 
-.carolina-hurricanes-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
+.new-jersey-devils {
+  background-color: #e13a3e;
 }
 
-.chicago-blackhawks-primary {
-  background-color: #C8102E;
-  color: #FFFFFF;
+.new-york-islanders {
+  background-color: #00539b;
 }
 
-.chicago-blackhawks-secondary {
-  background-color: #010101;
-  color: #FFFFFF;
+.new-york-rangers {
+  background-color: #0161ab;
 }
 
-.chicago-blackhawks-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
+.ottawa-senators {
+  background-color: rgb(218, 26, 50);
 }
 
-.colorado-avalanche-primary {
-  background-color: #6F263D;
-  color: #FFFFFF;
+.philadelphia-flyers {
+  background-color: #f4793e;
 }
 
-.colorado-avalanche-secondary {
-  background-color: #236192;
-  color: #FFFFFF;
+.pittsburgh-penguins {
+  background-color: #000000;
 }
 
-.colorado-avalanche-tertiary {
-  background-color: #A2AAAD;
-  color: #010101;
+.san-jose-sharks {
+  background-color: #05535d;
 }
 
-.columbus-blue-jackets-primary {
-  background-color: #041E42;
-  color: #FFFFFF;
+.seattle-kraken {
+  background-color: rgb(0, 22, 40);
 }
 
-.columbus-blue-jackets-secondary {
-  background-color: #C8102E;
-  color: #FFFFFF;
+.st-louis-blues {
+  background-color: #0447a0;
 }
 
-.columbus-blue-jackets-tertiary {
-  background-color: #A2AAAD;
-  color: #010101;
+.tampa-bay-lightning {
+  background-color: #002868;
 }
 
-.dallas-stars-primary {
-  background-color: #00843D;
-  color: #FFFFFF;
+.toronto-maple-leafs {
+  background-color: #003d78;
 }
 
-.dallas-stars-secondary {
-  background-color: #010101;
-  color: #FFFFFF;
+.vancouver-canucks {
+  background-color: #002e56;
 }
 
-.dallas-stars-tertiary {
-  background-color: #A2AAAD;
-  color: #010101;
+.vegas-golden-knights {
+  background-color: #837150;
 }
 
-.detroit-red-wings-primary {
-  background-color: #C8102E;
-  color: #FFFFFF;
+.washington-capitals {
+  background-color: #cf132b;
 }
 
-.detroit-red-wings-secondary {
-  background-color: #7C878E;
-  color: #010101;
-}
-
-.detroit-red-wings-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.edmonton-oilers-primary {
-  background-color: #FC4C02;
-  color: #FFFFFF;
-}
-
-.edmonton-oilers-secondary {
-  background-color: #041E42;
-  color: #FFFFFF;
-}
-
-.edmonton-oilers-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.florida-panthers-primary {
-  background-color: #C8102E;
-  color: #FFFFFF;
-}
-
-.florida-panthers-secondary {
-  background-color: #041E42;
-  color: #FFFFFF;
-}
-
-.florida-panthers-tertiary {
-  background-color: #B9975B;
-  color: #010101;
-}
-
-.los-angeles-kings-primary {
-  background-color: #010101;
-  color: #FFFFFF;
-}
-
-.los-angeles-kings-secondary {
-  background-color: #A2AAAD;
-  color: #010101;
-}
-
-.los-angeles-kings-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.minnesota-wild-primary {
-  background-color: #154734;
-  color: #FFFFFF;
-}
-
-.minnesota-wild-secondary {
-  background-color: #A6192E;
-  color: #FFFFFF;
-}
-
-.minnesota-wild-tertiary {
-  background-color: #DDCBA4;
-  color: #010101;
-}
-
-.montreal-canadiens-primary {
-  background-color: #A6192E;
-  color: #FFFFFF;
-}
-
-.montreal-canadiens-secondary {
-  background-color: #001E62;
-  color: #FFFFFF;
-}
-
-.montreal-canadiens-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.nashville-predators-primary {
-  background-color: #FFB81C;
-  color: #010101;
-}
-
-.nashville-predators-secondary {
-  background-color: #041E42;
-  color: #FFFFFF;
-}
-
-.nashville-predators-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.new-jersey-devils-primary {
-  background-color: #C8102E;
-  color: #FFFFFF;
-}
-
-.new-jersey-devils-secondary {
-  background-color: #010101;
-  color: #FFFFFF;
-}
-
-.new-jersey-devils-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.new-york-islanders-primary {
-  background-color: #003087;
-  color: #FFFFFF;
-}
-
-.new-york-islanders-secondary {
-  background-color: #FC4C02;
-  color: #FFFFFF;
-}
-
-.new-york-islanders-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.new-york-rangers-primary {
-  background-color: #0032A0;
-  color: #FFFFFF;
-}
-
-.new-york-rangers-secondary {
-  background-color: #C8102E;
-  color: #FFFFFF;
-}
-
-.new-york-rangers-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.ottawa-senators-primary {
-  background-color: #010101;
-  color: #FFFFFF;
-}
-
-.ottawa-senators-secondary {
-  background-color: #C8102E;
-  color: #FFFFFF;
-}
-
-.ottawa-senators-tertiary {
-  background-color: #B9975B;
-  color: #010101;
-}
-
-.philadelphia-flyers-primary {
-  background-color: #FA4616;
-  color: #FFFFFF;
-}
-
-.philadelphia-flyers-secondary {
-  background-color: #010101;
-  color: #FFFFFF;
-}
-
-.philadelphia-flyers-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.pittsburgh-penguins-primary {
-  background-color: #010101;
-  color: #FFFFFF;
-}
-
-.pittsburgh-penguins-secondary {
-  background-color: #FFB81C;
-  color: #FFFFFF;
-}
-
-.pittsburgh-penguins-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.san-jose-sharks-primary {
-  background-color: #006271;
-  color: #FFFFFF;
-}
-
-.san-jose-sharks-secondary {
-  background-color: #010101;
-  color: #FFFFFF;
-}
-
-.san-jose-sharks-tertiary {
-  background-color: #E57200;
-  color: #FFFFFF;
-}
-
-.seattle-kraken-primary {
-  background-color: #051C2C;
-  color: #FFFFFF;
-}
-
-.seattle-kraken-secondary {
-  background-color: #9CDBD9;
-  color: #010101;
-}
-
-.seattle-kraken-tertiary {
-  background-color: #C8102E;
-  color: #FFFFFF;
-}
-
-.st-louis-blues-primary {
-  background-color: #003087;
-  color: #FFFFFF;
-}
-
-.st-louis-blues-secondary {
-  background-color: #FFB81C;
-  color: #FFFFFF;
-}
-
-.st-louis-blues-tertiary {
-  background-color: #041E42;
-  color: #FFFFFF;
-}
-
-.tampa-bay-lightning-primary {
-  background-color: #00205B;
-  color: #FFFFFF;
-}
-
-.tampa-bay-lightning-secondary {
-  background-color: #010101;
-  color: #FFFFFF;
-}
-
-.tampa-bay-lightning-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.toronto-maple-leafs-primary {
-  background-color: #00205B;
-  color: #FFFFFF;
-}
-
-.toronto-maple-leafs-secondary {
-  background-color: #A2AAAD;
-  color: #010101;
-}
-
-.toronto-maple-leafs-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.vancouver-canucks-primary {
-  background-color: #00205B;
-  color: #FFFFFF;
-}
-
-.vancouver-canucks-secondary {
-  background-color: #00843D;
-  color: #FFFFFF;
-}
-
-.vancouver-canucks-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.vegas-golden-knights-primary {
-  background-color: #B9975B;
-  color: #FFFFFF;
-}
-
-.vegas-golden-knights-secondary {
-  background-color: #333F48;
-  color: #FFFFFF;
-}
-
-.vegas-golden-knights-tertiary {
-  background-color: #C8102E;
-  color: #FFFFFF;
-}
-
-.washington-capitals-primary {
-  background-color: #C8102E;
-  color: #FFFFFF;
-}
-
-.washington-capitals-secondary {
-  background-color: #041E42;
-  color: #FFFFFF;
-}
-
-.washington-capitals-tertiary {
-  background-color: #FFFFFF;
-  color: #010101;
-}
-
-.winnipeg-jets-primary {
-  background-color: #041E42;
-  color: #FFFFFF;
-}
-
-.winnipeg-jets-secondary {
-  background-color: #004C97;
-  color: #FFFFFF;
-}
-
-.winnipeg-jets-tertiary {
-  background-color: #A6192E;
-  color: #FFFFFF;
+.winnipeg-jets {
+  background-color: #002e62;
 }

@@ -35,20 +35,18 @@ export const NavContent = () => {
             <Menu.Items className={'z-10 origin-top-right absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-gray-300 divide-y divide-gray-200 focus:outline-none'}>
               {getTeamsForDivision(division).map((team) => (
                 <Menu.Item key={team.getId()}>
-                  {({ active }) => (
-                    <Link
-                      className={`${active ? 'bg-gray-200' : ''} hover:bg-gray-200 text-gray-900 group flex items-center px-4 py-2`}
-                      href={`/teams/${team.getSlug()}`}
-                    >
-                      <Image
-                        alt={`${team.getName()} Logo`}
-                        height={30}
-                        src={`/img/logos/${team.getSlug()}.svg`}
-                        width={30}
-                      />
-                      <span className={'ml-3'}>{team.getName()}</span>
-                    </Link>
-                  )}
+                  <Link
+                    className={'ui-active:bg-gray-200 hover:bg-gray-200 text-gray-900 group flex items-center px-4 py-2'}
+                    href={`/teams/${team.getSlug()}`}
+                  >
+                    <Image
+                      alt={`${team.getName()} Logo`}
+                      height={30}
+                      src={`/img/logos/${team.getSlug()}.svg`}
+                      width={30}
+                    />
+                    <span className={'ml-3'}>{team.getName()}</span>
+                  </Link>
                 </Menu.Item>
               ))}
             </Menu.Items>

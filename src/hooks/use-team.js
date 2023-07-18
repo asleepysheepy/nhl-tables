@@ -9,6 +9,6 @@ export const useTeam = () => {
 
   return {
     team,
-    teamClassName: team ? team.getSlug() : 'neutral',
+    teamClassName: team ? team.getSlug() : 'nhl',
   }
 }
