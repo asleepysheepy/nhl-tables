@@ -1,7 +1,9 @@
-const colors = require('tailwindcss/colors')
+import type { Config } from 'tailwindcss'
+import colors from 'tailwindcss/colors'
 
-module.exports = {
+export default{
   content: [
+    './src/app/**/*.{js,ts,jsx,tsx}',
     './src/pages/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
@@ -21,4 +23,4 @@ module.exports = {
     extend: {},
   },
   plugins: [require('@headlessui/tailwindcss')],
-}
+} satisfies Config
