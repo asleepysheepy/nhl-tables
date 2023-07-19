@@ -18,7 +18,7 @@ const Home = () => {
         {Team.getTeams().map((team) => (
           <div className={'m-3'} key={team.getId()}>
             <Link className={'flex flex-col items-center text-center text-lg font-semibold hover:bg-gray-100 p-4'} href={`/teams/${team.getSlug()}`}>
-              <TeamLogo size={150} team={team} />
+              <TeamLogo size={100} team={team} />
               {team.getName()}
             </Link>
           </div>
