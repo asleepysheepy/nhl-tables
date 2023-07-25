@@ -1,4 +1,4 @@
-import type { Game, Team, GameTeam } from '@/models'
+import type { Game, Team } from '@/models'
 
 /**
  * Takes a like of full season games for a team, and maps them by the
@@ -49,7 +49,7 @@ export function groupGamesByTeam (games: Game[], team: Team): Record<string, Gam
  * @param team The teamName to get the opponent of
  * @returns The  team playing against the given team.
  */
-export function getOpposingTeam (game: Game, teamName: string): GameTeam {
+export function getOpposingTeam (game: Game, teamName: string): Team {
   if (game.awayTeam.name === teamName) {
     return game.homeTeam
   }
@@ -83,7 +83,7 @@ export function wasShootout (game: Game): boolean {
  * @param game the game to check the winner for
  * @returns the winning team
  */
-export function getWinningTeam (game: Game): GameTeam {
+export function getWinningTeam (game: Game): Team {
   if (game.homeTeamScore > game.awayTeamScore) {
     return game.homeTeam
   }

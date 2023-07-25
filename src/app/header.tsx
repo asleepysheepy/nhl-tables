@@ -28,6 +28,7 @@ export default function Header ({ teams }: { teams: Team[] }): React.ReactElemen
 
   function renderTeamHeader (): React.ReactElement | null {
     if (activeTeam == null) { return null }
+    if (activeTeam.stats == null) { throw new Error(`Could not load stats for team: ${activeTeam.name}`) }
 
     return (
       <header className={'pb-5 pt-3'}>
@@ -43,7 +44,7 @@ export default function Header ({ teams }: { teams: Team[] }): React.ReactElemen
               <span className={'font-bold'}>Games Played:</span> {activeTeam.stats.gamesPlayed}
             </p>
             <p className={'text-lg'}>
-              <span className={'font-bold'}>Record:</span> {formatTeamRecord(activeTeam)}
+              <span className={'font-bold'}>Record:</span> {formatTeamRecord(activeTeam.stats)}
             </p>
             <p className={'text-lg'}>
               <span className={'font-bold'}>Points Percentage:</span> {formatPointsPercentage(activeTeam.stats.pointsPercentage)}

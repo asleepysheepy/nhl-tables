@@ -1,10 +1,9 @@
 export interface Team {
   id: number
   name: string
-  abbreviation: string
   slug: string
-  division: Division
-  stats: TeamStats
+  division?: Division
+  stats?: TeamStats
 }
 
 export interface Division {
@@ -21,17 +20,11 @@ export interface TeamStats {
   pointsPercentage: number
 }
 
-export interface GameTeam {
-  id: number
-  name: string
-  slug: string
-}
-
 export interface Game {
   gameId: number
   gameDate: string
-  homeTeam: GameTeam
-  awayTeam: GameTeam
+  homeTeam: Team
+  awayTeam: Team
   homeTeamScore: number
   awayTeamScore: number
   currentPeriod: number

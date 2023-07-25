@@ -20,7 +20,6 @@ export async function fetchTeamsData (): Promise<Team[]> {
     const team: Team = {
       id: t.id,
       name: t.name,
-      abbreviation: t.abbreviation,
       slug: formatTeamSlug(t.name),
       division: {
         name: t.division.name,

@@ -10,7 +10,7 @@ import Logo from './logo'
 import { divisions } from '@/constants'
 
 function teamsForDivision (division: Division, teams: Team[]): Team[] {
-  return teams.filter((team) => team.division.id === division.id)
+  return teams.filter((team) => team.division?.id === division.id)
 }
 
 function LogoButton ({ open }: { open: boolean }): React.ReactElement {

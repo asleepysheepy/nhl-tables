@@ -1,4 +1,4 @@
-import type { Game, Team } from '@/models'
+import type { Game, TeamStats } from '@/models'
 
 import { wasOvertime, wasShootout } from '@/game-service'
 
@@ -6,11 +6,11 @@ import { wasOvertime, wasShootout } from '@/game-service'
  * Formats a teams record as:
  * W - L - OTL
  *
- * @param team the Team to format the record of
+ * @param states the Team's stats to format the record from
  * @returns the formatted record
  */
-export function formatTeamRecord (team: Team): string {
-  return `${team.stats.wins} - ${team.stats.losses} - ${team.stats.otLosses}`
+export function formatTeamRecord (stats: TeamStats): string {
+  return `${stats.wins} - ${stats.losses} - ${stats.otLosses}`
 }
 
 /**
