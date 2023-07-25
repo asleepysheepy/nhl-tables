@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Logo from './logo'
 import { fetchTeamsData } from '@/api'
 
-export default async function HomePage() {
+export default async function HomePage (): Promise<React.ReactElement> {
   const teams = await fetchTeamsData()
 
   return (
@@ -31,5 +31,5 @@ export default async function HomePage() {
 }
 
 export const metadata = {
-  title: 'NHL Schedule Tables',
+  title: 'NHL Schedule Tables'
 }

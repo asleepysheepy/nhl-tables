@@ -1,11 +1,12 @@
+import type { Metadata } from 'next'
+
 import TableRow from './table-row'
 import SeasonSelector from './season-selector'
 import { fetchGameData, fetchTeamsData } from '@/api'
 import { defaultSeason } from '@/constants'
 import { groupGamesByTeam } from '@/game-service'
-import { Metadata } from 'next'
 
-type Props = {
+interface Props {
   params: {
     teamId: string
   }
@@ -14,11 +15,11 @@ type Props = {
   }
 }
 
-export default async function TeamPage({ params, searchParams }: Props) {
+export default async function TeamPage ({ params, searchParams }: Props): Promise<React.ReactElement> {
   // Fetch teams and determine the active team, throw an error if no active team was found
   const teams = await fetchTeamsData()
-  const activeTeam = teams.find((team => team.id === parseInt(params.teamId)))
-  if(!activeTeam) { throw new Error('Unable to locate team.')}
+  const activeTeam = teams.find(team => team.id === parseInt(params.teamId))
+  if (activeTeam == null) { throw new Error('Unable to locate team.') }
 
   // Get the season from the url search params, fall back to a default
   const season = searchParams.season ?? defaultSeason.key
@@ -53,12 +54,12 @@ export default async function TeamPage({ params, searchParams }: Props) {
   )
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata ({ params }: Props): Promise<Metadata> {
   const teams = await fetchTeamsData()
-  const activeTeam = teams.find((team => team.id === parseInt(params.teamId)))
-  if(!activeTeam) { throw new Error('Unable to locate team.')}
+  const activeTeam = teams.find(team => team.id === parseInt(params.teamId))
+  if (activeTeam == null) { throw new Error('Unable to locate team.') }
 
   return {
-    title: `${activeTeam.name} Table`,
+    title: `${activeTeam.name} Table`
   }
 }

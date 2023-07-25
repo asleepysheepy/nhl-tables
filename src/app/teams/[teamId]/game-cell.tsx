@@ -3,7 +3,7 @@ import type { Game } from '@/models'
 import { isHomeTeam, wasOvertime, wasShootout, wasWinFor } from '@/game-service'
 import { formatGameDate, formatGameScore } from '@/formatters'
 
-type Props = {
+interface Props {
   /**
    * The game to be represented by this cell
    */
@@ -15,9 +15,9 @@ type Props = {
   teamName: string
 }
 
-export default function GameCell({ game, teamName }: Props) {
+export default function GameCell ({ game, teamName }: Props): React.ReactElement {
   // Return an empty cell if there is no game
-  if (!game) {
+  if (game == null) {
     return <td className={'text-center text-sm'}> - </td>
   }
 
@@ -28,8 +28,10 @@ export default function GameCell({ game, teamName }: Props) {
   const wasPageTeamHome = !isHomeTeam(game, teamName)
   const pageTeam = wasPageTeamHome ? game.homeTeam : game.awayTeam
 
-  let cellClass, gameOutcome
-  if(game.isFinal) {
+  let cellClass = ''
+  let gameOutcome = ''
+
+  if (game.isFinal) {
     if (wasWinFor(game, pageTeam.name)) {
       cellClass = 'bg-green-100 text-green-900'
       gameOutcome = 'Win'
@@ -41,7 +43,6 @@ export default function GameCell({ game, teamName }: Props) {
       gameOutcome = 'Loss'
     }
   }
-  
 
   return (
     <td className={`${cellClass} text-center text-xs`}>

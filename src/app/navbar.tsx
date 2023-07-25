@@ -1,19 +1,20 @@
 'use client'
 
+import type { Division, Team } from '@/models'
+
 import Link from 'next/link'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import Logo from './logo'
-import { Division, Team } from '@/models'
 import { divisions } from '@/constants'
 
 function teamsForDivision (division: Division, teams: Team[]): Team[] {
   return teams.filter((team) => team.division.id === division.id)
 }
 
-function LogoButton({ open }: { open: boolean }) {
-  if(open) {
+function LogoButton ({ open }: { open: boolean }): React.ReactElement {
+  if (open) {
     return (
       <Disclosure.Button as={Link} href={'/'}>
         <Logo size={40} />
@@ -28,7 +29,7 @@ function LogoButton({ open }: { open: boolean }) {
   )
 }
 
-function MobileButton({ open }: { open: boolean }) {
+function MobileButton ({ open }: { open: boolean }): React.ReactElement {
   const Icon = open ? XMarkIcon : Bars3Icon
 
   return (
@@ -41,7 +42,7 @@ function MobileButton({ open }: { open: boolean }) {
   )
 }
 
-function MobileNav({ teams }: { teams: Team[] }) {
+function MobileNav ({ teams }: { teams: Team[] }): React.ReactElement {
   return (
     <Disclosure.Panel className={'border-b border-gray-700 md:hidden'}>
       <div className={'px-2 py-3 space-y-1 sm:px-3'}>
@@ -61,7 +62,7 @@ function MobileNav({ teams }: { teams: Team[] }) {
   )
 }
 
-function DesktopNav({ teams }: { teams: Team[] }) {
+function DesktopNav ({ teams }: { teams: Team[] }): React.ReactElement {
   return (
     <div className={'ml-10 flex items-baseline space-x-4'}>
       {divisions.map((division) => (
@@ -99,7 +100,7 @@ function DesktopNav({ teams }: { teams: Team[] }) {
   )
 }
 
-export default function Navbar({ teams }: { teams: Team[] }) {
+export default function Navbar ({ teams }: { teams: Team[] }): React.ReactElement {
   return (
     <Disclosure as={'nav'}>
       {({ open }) => (

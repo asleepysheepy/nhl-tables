@@ -2,29 +2,29 @@ import type { Game, Team } from '@/models'
 
 import { formatTeamSlug } from '@/formatters'
 
-export async function fetchTeamsData(): Promise<Team[]> {
-  //Fetch team data from NHL API
+export async function fetchTeamsData (): Promise<Team[]> {
+  // Fetch team data from NHL API
   const response = await fetch('https://statsapi.web.nhl.com/api/v1/teams?expand=team.stats')
   const data = await response.json()
   const teamsData = data.teams
 
   /**
    * Transform the object from the API in to a Team.
-   * 
+   *
    * We only need minimal data about the team compared to what we are given
    * so we can throw the rest away.
    */
   const teams: Team[] = teamsData.map((t: any) => {
     const stats = t.teamStats[0].splits[0].stat
 
-    return {
+    const team: Team = {
       id: t.id,
       name: t.name,
       abbreviation: t.abbreviation,
       slug: formatTeamSlug(t.name),
       division: {
         name: t.division.name,
-        id: t.division.id,
+        id: t.division.id
       },
       stats: {
         gamesPlayed: stats.gamesPlayed,
@@ -32,9 +32,11 @@ export async function fetchTeamsData(): Promise<Team[]> {
         losses: stats.losses,
         otLosses: stats.ot,
         points: stats.pts,
-        pointsPercentage: stats.ptPctg,
+        pointsPercentage: stats.ptPctg
       }
-    } as Team
+    }
+
+    return team
   })
 
   // Sort teams alphabetically by full name
@@ -51,7 +53,7 @@ export async function fetchTeamsData(): Promise<Team[]> {
   return teams
 }
 
-export async function fetchGameData(teamId: number, season: string): Promise<Game[]> {
+export async function fetchGameData (teamId: number, season: string): Promise<Game[]> {
   const baseUrl = 'https://statsapi.web.nhl.com/api/v1/schedule'
   const teamParam = `teamId=${teamId}`
   const seasonParam = `season=${season}`
@@ -79,7 +81,7 @@ export async function fetchGameData(teamId: number, season: string): Promise<Gam
     awayTeamScore: data.linescore.teams.away.goals,
     currentPeriod: data.linescore.currentPeriod,
     isFinal: data.linescore.currentPeriodTimeRemaining === 'Final'
-  })) 
+  }))
 
   return games
 }

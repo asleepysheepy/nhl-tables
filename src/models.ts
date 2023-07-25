@@ -1,4 +1,4 @@
-export type Team = {
+export interface Team {
   id: number
   name: string
   abbreviation: string
@@ -7,12 +7,12 @@ export type Team = {
   stats: TeamStats
 }
 
-export type Division = {
+export interface Division {
   name: string
   id: number
 }
 
-export type TeamStats = {
+export interface TeamStats {
   gamesPlayed: number
   wins: number
   losses: number
@@ -21,26 +21,24 @@ export type TeamStats = {
   pointsPercentage: number
 }
 
-export type Game = {
+export interface GameTeam {
+  id: number
+  name: string
+  slug: string
+}
+
+export interface Game {
   gameId: number
   gameDate: string
-  homeTeam: {
-    id: number,
-    name: string,
-    slug: string,
-  }
-  awayTeam: {
-    id: number,
-    name: string,
-    slug: string,
-  }
+  homeTeam: GameTeam
+  awayTeam: GameTeam
   homeTeamScore: number
   awayTeamScore: number
   currentPeriod: number
   isFinal: boolean
 }
 
-export type Season = {
+export interface Season {
   key: string
   name: string
 }

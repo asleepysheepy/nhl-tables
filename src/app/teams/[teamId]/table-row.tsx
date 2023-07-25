@@ -5,7 +5,7 @@ import Logo from '@/app/logo'
 import { formatTeamSlug, formatPointsPercentage } from '@/formatters'
 import { wasWinFor, wasOvertime, wasShootout } from '@/game-service'
 
-type Props = {
+interface Props {
   /**
    * The game to be represented by this cell
    */
@@ -17,8 +17,7 @@ type Props = {
   teamName: string
 }
 
-export default function TableRow({ teamName, games }: Props) {
-
+export default function TableRow ({ teamName, games }: Props): React.ReactElement {
   // Calculates the total points the "page team" has earned against the "row team"
   const totalPoints = games.reduce((points, game) => {
     // No points for a game that isn't over yet
@@ -29,7 +28,7 @@ export default function TableRow({ teamName, games }: Props) {
      * If it wasn't a win for the page team, but did go to a shootout or OT, one point
      * Otherwise it was a regulation loss, no points
      */
-    if(!wasWinFor(game, teamName)) {
+    if (!wasWinFor(game, teamName)) {
       return points + 2
     } else if (wasOvertime(game) || wasShootout(game)) {
       return points + 1
@@ -39,18 +38,18 @@ export default function TableRow({ teamName, games }: Props) {
   }, 0)
 
   // Calculates the total number of points possible, two points per completed game
-   const possiblePoints = games.reduce((points, game) => {
+  const possiblePoints = games.reduce((points, game) => {
     if (!game.isFinal) { return points }
 
     return points + 2
-   }, 0)
+  }, 0)
 
-   /**
+  /**
     * Calculate the points percentage for the row, if the possible points are 0 (ie, the two
     * teams haven't played each other yet) then set the percentage to 0 rather than trying
     * to divide by 0.
     */
-   const pointsPercentage = possiblePoints === 0 ? 0 : Math.round(100 * (totalPoints / possiblePoints))
+  const pointsPercentage = possiblePoints === 0 ? 0 : Math.round(100 * (totalPoints / possiblePoints))
 
   return (
     <tr className={'divide-x divide-gray-300'} key={formatTeamSlug(teamName)}>
@@ -60,7 +59,7 @@ export default function TableRow({ teamName, games }: Props) {
         </div>
         <span className={'ml-0 md:ml-3'}>{teamName}</span>
       </td>
-      {/* For the sake of the table, we alway want to render the same number of 
+      {/* For the sake of the table, we alway want to render the same number of
         * cells regardless of the number of games.
        */}
       <GameCell game={games[0]} teamName={teamName} />

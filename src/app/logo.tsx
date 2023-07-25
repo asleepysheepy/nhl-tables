@@ -1,13 +1,13 @@
 import Image from 'next/image'
 import { formatTeamSlug } from '@/formatters'
 
-type Props = {
+interface Props {
   size: number
-  teamName?: string,
+  teamName?: string
 }
 
-export default function Logo ({ teamName, size}: Props) {
-  if(teamName) {
+export default function Logo ({ teamName, size }: Props): React.ReactElement {
+  if (teamName != null) {
     return (
       <Image
         alt={`${teamName} Logo`}
@@ -17,7 +17,7 @@ export default function Logo ({ teamName, size}: Props) {
       />
     )
   }
-  
+
   return (
     <Image
       alt={'NHL Logo'}

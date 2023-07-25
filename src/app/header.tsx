@@ -7,16 +7,16 @@ import NavBar from './navbar'
 import { useParams } from 'next/navigation'
 import { formatTeamRecord, formatPointsPercentage } from '@/formatters'
 
-export default function Header({ teams }: { teams: Team[]}) {
+export default function Header ({ teams }: { teams: Team[] }): React.ReactElement {
   // Check for a team in the URL
   const params = useParams()
   const activeTeamId = params.teamId as string
-  const activeTeam = teams.find((team => team.id === parseInt(activeTeamId)))
+  const activeTeam = teams.find(team => team.id === parseInt(activeTeamId))
 
   // If there was an active team, use that team's colors for the header background, otherwise use black
-  const bgClassName = activeTeam ? activeTeam.slug : 'bg-black'
+  const bgClassName = (activeTeam != null) ? activeTeam.slug : 'bg-black'
 
-  function renderGenericHeader() {
+  function renderGenericHeader (): React.ReactElement {
     return (
       <header className={'pb-10 pt-3'}>
         <div className={'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
@@ -26,8 +26,8 @@ export default function Header({ teams }: { teams: Team[]}) {
     )
   }
 
-  function renderTeamHeader() {
-    if(!activeTeam) { return null }
+  function renderTeamHeader (): React.ReactElement | null {
+    if (activeTeam == null) { return null }
 
     return (
       <header className={'pb-5 pt-3'}>
@@ -57,7 +57,7 @@ export default function Header({ teams }: { teams: Team[]}) {
   return (
     <div className={`${bgClassName} text-white pb-32`}>
       <NavBar teams={teams} />
-      {activeTeam ? renderTeamHeader() : renderGenericHeader()}
+      {(activeTeam != null) ? renderTeamHeader() : renderGenericHeader()}
     </div>
   )
 }

@@ -3,7 +3,7 @@ import './globals.css'
 import Header from './header'
 import { fetchTeamsData } from '@/api'
 
-export default async function Layout({ children }: { children: React.ReactNode}) {
+export default async function Layout ({ children }: { children: React.ReactNode }): Promise<React.ReactElement> {
   const teams = await fetchTeamsData()
 
   return (

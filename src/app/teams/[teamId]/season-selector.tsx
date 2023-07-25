@@ -6,7 +6,7 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/outline'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import { seasons, defaultSeason } from '@/constants'
 
-export default function SeasonSelector() {
+export default function SeasonSelector (): React.ReactElement {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -16,7 +16,7 @@ export default function SeasonSelector() {
   const selectedSeason = seasons[seasonParam]
 
   // When a user changes the season, set the new season in the URL Search Params
-  function onSelectionChange(newSelection: string): void {
+  function onSelectionChange (newSelection: string): void {
     router.push(`${pathname}?season=${newSelection}`)
   }
 
