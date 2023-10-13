@@ -20,12 +20,7 @@ export const pacific: Division = {
   name: 'Pacific'
 }
 
-export const divisions = [
-  pacific,
-  central,
-  metropolitan,
-  atlantic
-]
+export const divisions = [pacific, central, metropolitan, atlantic]
 
 export const seasons: Record<string, Season> = {
   20232024: {
@@ -42,4 +37,4 @@ export const seasons: Record<string, Season> = {
   }
 }
 
-export const defaultSeason = seasons['20222023']
+export const defaultSeason = seasons['20232024']
