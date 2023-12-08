@@ -1,23 +1,9 @@
 import Image from 'next/image'
-import { formatTeamSlug } from '@/formatters'
-
 interface Props {
   size: number
-  teamName?: string
 }
 
-export default function Logo ({ teamName, size }: Props): React.ReactElement {
-  if (teamName != null) {
-    return (
-      <Image
-        alt={`${teamName} Logo`}
-        height={size}
-        src={`/img/logos/${formatTeamSlug(teamName)}.svg`}
-        width={size}
-      />
-    )
-  }
-
+export default function Logo ({ size }: Props): React.ReactElement {
   return (
     <Image
       alt={'NHL Logo'}

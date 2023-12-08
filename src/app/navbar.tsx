@@ -1,16 +1,16 @@
 'use client'
 
-import type { Division, Team } from '@/models'
-
+import type { Team } from '@/models'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import Logo from './logo'
 import { divisions } from '@/constants'
 
-function teamsForDivision (division: Division, teams: Team[]): Team[] {
-  return teams.filter((team) => team.division?.id === division.id)
+function teamsForDivision (division: string, teams: Team[]): Team[] {
+  return teams.filter((team) => team.divisionName === division)
 }
 
 function LogoButton ({ open }: { open: boolean }): React.ReactElement {
@@ -50,10 +50,15 @@ function MobileNav ({ teams }: { teams: Team[] }): React.ReactElement {
           <Disclosure.Button
             as={Link}
             className={'group flex items-center px-4 py-2'}
-            href={`/teams/${team.id}`}
-            key={team.id}
+            href={`/teams/${team.teamId}`}
+            key={team.teamId}
           >
-            <Logo size={30} teamName={team.name} />
+            <Image
+              src={team.darkLogo.url}
+              alt={`${team.name} Logo`}
+              width={33}
+              height={22}
+            />
             <span className={'ml-3'}>{team.name}</span>
           </Disclosure.Button>
         ))}
@@ -66,9 +71,9 @@ function DesktopNav ({ teams }: { teams: Team[] }): React.ReactElement {
   return (
     <div className={'ml-10 flex items-baseline space-x-4'}>
       {divisions.map((division) => (
-        <Menu as={'div'} className={'relative inline-block text-left'} key={division.id}>
-          <Menu.Button className={'inline-flex justify-center w-full px-4 py-2 font-medium focusable'}>
-            {division.name}
+        <Menu as={'div'} className={'relative inline-block text-left'} key={division}>
+          <Menu.Button className={'inline-flex items-center w-full px-4 py-2 font-medium focusable'}>
+            {division}
             <ChevronDownIcon aria-hidden={'true'} className={'-mr-1 ml-2 h-5 w-5'} />
           </Menu.Button>
           <Transition
@@ -82,12 +87,17 @@ function DesktopNav ({ teams }: { teams: Team[] }): React.ReactElement {
           >
             <Menu.Items className={'z-10 origin-top-right absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-gray-300 divide-y divide-gray-200 focus:outline-none'}>
               {teamsForDivision(division, teams).map((team) => (
-                <Menu.Item key={team.id}>
+                <Menu.Item key={team.teamId}>
                   <Link
                     className={'ui-active:bg-gray-200 hover:bg-gray-200 text-gray-900 group flex items-center px-4 py-2'}
-                    href={`/teams/${team.id}`}
+                    href={`/teams/${team.teamId}`}
                   >
-                    <Logo size={30} teamName={team.name} />
+                    <Image
+                      src={team.logo.url}
+                      alt={`${team.name} Logo`}
+                      width={33}
+                      height={22}
+                    />
                     <span className={'ml-3'}>{team.name}</span>
                   </Link>
                 </Menu.Item>

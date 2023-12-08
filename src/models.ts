@@ -1,14 +1,22 @@
-export interface Team {
-  id: number
+export interface Season {
+  key: string
   name: string
-  slug: string
-  division?: Division
-  stats?: TeamStats
 }
 
-export interface Division {
-  name: string
+interface Logo {
   id: number
+  url: string
+}
+
+export interface Team {
+  teamId: number
+  franchiseId: number
+  conferenceName: string
+  divisionName: string
+  name: string
+  abbreviation: string
+  logo: Logo
+  darkLogo: Logo
 }
 
 export interface TeamStats {
@@ -29,9 +37,4 @@ export interface Game {
   awayTeamScore: number
   currentPeriod: number
   isFinal: boolean
-}
-
-export interface Season {
-  key: string
-  name: string
 }

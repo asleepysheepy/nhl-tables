@@ -1,26 +1,6 @@
-import type { Division, Season } from '@/models'
+import type { Season } from '@/models'
 
-export const atlantic: Division = {
-  id: 17,
-  name: 'Atlantic'
-}
-
-export const central: Division = {
-  id: 16,
-  name: 'Central'
-}
-
-export const metropolitan: Division = {
-  id: 18,
-  name: 'Metropolitan'
-}
-
-export const pacific: Division = {
-  id: 15,
-  name: 'Pacific'
-}
-
-export const divisions = [pacific, central, metropolitan, atlantic]
+export const divisions = ['Pacific', 'Central', 'Metropolitan', 'Atlantic']
 
 export const seasons: Record<string, Season> = {
   20232024: {

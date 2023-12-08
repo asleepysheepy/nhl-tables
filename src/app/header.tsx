@@ -1,20 +1,21 @@
-'use client'
-
 import type { Team } from '@/models'
 
-import Logo from './logo'
 import NavBar from './navbar'
-import { useParams } from 'next/navigation'
 import { formatTeamRecord, formatPointsPercentage } from '@/formatters'
+import { fetchTeamStats } from '@/api'
+import { defaultSeason } from '@/constants'
+import Image from 'next/image'
 
-export default function Header ({ teams }: { teams: Team[] }): React.ReactElement {
-  // Check for a team in the URL
-  const params = useParams()
-  const activeTeamId = params.teamId as string
-  const activeTeam = teams.find(team => team.id === parseInt(activeTeamId))
+interface Props {
+  teams: Team[]
+  activeTeam?: Team
+}
 
+export default async function Header ({ teams, activeTeam }: Props): Promise<React.ReactElement> {
   // If there was an active team, use that team's colors for the header background, otherwise use black
-  const bgClassName = (activeTeam != null) ? activeTeam.slug : 'bg-black'
+  const bgClassName = (activeTeam != null) ? `bg-[--color-${activeTeam.abbreviation}]` : 'bg-black'
+
+  const activeTeamStats = activeTeam != null ? await fetchTeamStats(activeTeam, defaultSeason) : null
 
   function renderGenericHeader (): React.ReactElement {
     return (
@@ -28,26 +29,34 @@ export default function Header ({ teams }: { teams: Team[] }): React.ReactElemen
 
   function renderTeamHeader (): React.ReactElement | null {
     if (activeTeam == null) { return null }
-    if (activeTeam.stats == null) { throw new Error(`Could not load stats for team: ${activeTeam.name}`) }
+    if (activeTeamStats == null) {
+      throw new Error(`Could not load stats for team: ${activeTeam.name}`)
+    }
 
     return (
       <header className={'pb-5 pt-3'}>
         <div className={'flex flex-col md:flex-row justify-between items-left md:items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
           <div className={'my-4'}>
-            <Logo size={150} teamName={activeTeam.name} />
+            <Image
+              src={activeTeam.logo.url}
+              alt={`${activeTeam.name} Logo`}
+              width={150}
+              height={100}
+              className="mb-2"
+            />
           </div>
           <div>
             <h1 className={'text-5xl font-bold mb-5 md:mb-0'}>{activeTeam.name}</h1>
           </div>
           <div>
             <p className={'text-lg'}>
-              <span className={'font-bold'}>Games Played:</span> {activeTeam.stats.gamesPlayed}
+              <span className={'font-bold'}>Games Played:</span> {activeTeamStats.gamesPlayed}
             </p>
             <p className={'text-lg'}>
-              <span className={'font-bold'}>Record:</span> {formatTeamRecord(activeTeam.stats)}
+              <span className={'font-bold'}>Record:</span> {formatTeamRecord(activeTeamStats)}
             </p>
             <p className={'text-lg'}>
-              <span className={'font-bold'}>Points Percentage:</span> {formatPointsPercentage(activeTeam.stats.pointsPercentage)}
+              <span className={'font-bold'}>Points Percentage:</span> {formatPointsPercentage(activeTeamStats.pointsPercentage)}
             </p>
           </div>
         </div>

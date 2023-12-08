@@ -1,16 +1,20 @@
 import './globals.css'
 
 import Header from './header'
-import { fetchTeamsData } from '@/api'
+import { fetchTeams } from '@/api'
 
-export default async function Layout ({ children }: { children: React.ReactNode }): Promise<React.ReactElement> {
-  const teams = await fetchTeamsData()
+export default async function Layout ({ children, params }: { children: React.ReactNode, params: { teamId: string | undefined } }): Promise<React.ReactElement> {
+  const teams = await fetchTeams()
+
+  const activeTeamId = params.teamId as string
+  const activeTeam = teams.find(team => team.teamId === parseInt(activeTeamId))
+  console.log(params)
 
   return (
     <html className={'h-full bg-gray-100'} lang={'en'}>
       <body className={'h-full'}>
         <div className={'min-h-full'}>
-          <Header teams={teams} />
+          <Header teams={teams} activeTeam={activeTeam} />
 
           <main className={'-mt-32'}>
             <div className={'max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8'}>
