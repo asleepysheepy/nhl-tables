@@ -1,14 +1,22 @@
-export interface Team {
-  id: number
+export interface Season {
+  key: string
   name: string
-  slug: string
-  division?: Division
-  stats?: TeamStats
 }
 
-export interface Division {
-  name: string
+interface Logo {
   id: number
+  url: string
+}
+
+export interface Team {
+  teamId: number
+  franchiseId: number
+  conferenceName: string
+  divisionName: string
+  name: string
+  abbreviation: string
+  logo: Logo
+  darkLogo: Logo
 }
 
 export interface TeamStats {
@@ -22,16 +30,16 @@ export interface TeamStats {
 
 export interface Game {
   gameId: number
-  gameDate: string
+  gameDate: Date
+  gameType: number
   homeTeam: Team
   awayTeam: Team
   homeTeamScore: number
   awayTeamScore: number
-  currentPeriod: number
+  isRegulation: boolean
+  isOvertime: boolean
+  isShootout: boolean
+  endedIn?: 'REG' | 'OT' | 'SO'
   isFinal: boolean
-}
-
-export interface Season {
-  key: string
-  name: string
+  getWinningTeam: () => Team | undefined
 }

@@ -1,11 +1,12 @@
-import type { Config } from 'tailwindcss'
+import { type Config } from 'tailwindcss'
 import colors from 'tailwindcss/colors'
 
 export default {
   content: [
     './src/app/**/*.{js,ts,jsx,tsx}',
     './src/pages/**/*.{js,ts,jsx,tsx}',
-    './src/components/**/*.{js,ts,jsx,tsx}'
+    './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/utils.ts',
   ],
   theme: {
     colors: {
@@ -17,10 +18,10 @@ export default {
       gray: colors.neutral,
 
       green: colors.emerald,
-      red: colors.rose,
-      yellow: colors.amber
+      red: colors.red,
+      yellow: colors.yellow,
     },
-    extend: {}
+    extend: {},
   },
-  plugins: [require('@headlessui/tailwindcss')]
+  plugins: [require('@headlessui/tailwindcss'), require('@tailwindcss/forms')],
 } satisfies Config

@@ -1,86 +1,165 @@
-import type { Game, Team } from '@/models'
+import { defaultSeason } from '@/constants'
+import { type Game, type Season, type Team, type TeamStats } from '@/models'
 
-import { formatTeamSlug } from '@/formatters'
+function teamsUrl(): string {
+  return (
+    'https://records.nhl.com/site/api/franchise' +
+    '?include=teams.id&include=teams.active' +
+    '&include=teams.triCode&include=teams.fullName' +
+    '&include=teams.conference.name&include=teams.division.name' +
+    '&include=teams.logos' +
+    '&sort=fullName'
+  )
+}
 
-export async function fetchTeamsData (): Promise<Team[]> {
-  // Fetch team data from NHL API
-  const response = await fetch('https://statsapi.web.nhl.com/api/v1/teams?expand=team.stats')
-  const data = await response.json()
-  const teamsData = data.teams
+function teamStatsUrl(franchiseId: number, seasonId: string): string {
+  return (
+    'https://api.nhle.com/stats/rest/en/team/summary' +
+    '?isAggregate=false&isGame=false' +
+    '&factCayenneExp=gamesPlayed%3E=1' +
+    `&cayenneExp=franchiseId%3D${franchiseId}%20and%20gameTypeId=2%20and%20` +
+    `seasonId%3C=${seasonId}%20and%20seasonId%3E=${seasonId}`
+  )
+}
 
-  /**
-   * Transform the object from the API in to a Team.
-   *
-   * We only need minimal data about the team compared to what we are given
-   * so we can throw the rest away.
-   */
-  const teams: Team[] = teamsData.map((t: any) => {
-    const stats = t.teamStats[0].splits[0].stat
+function teamScheduleUrl(teamAbbreviation: string, seasonId: string): string {
+  return `https://api-web.nhle.com/v1/club-schedule-season/${teamAbbreviation}/${seasonId}`
+}
 
-    const team: Team = {
-      id: t.id,
-      name: t.name,
-      slug: formatTeamSlug(t.name),
-      division: {
-        name: t.division.name,
-        id: t.division.id
-      },
-      stats: {
-        gamesPlayed: stats.gamesPlayed,
-        wins: stats.wins,
-        losses: stats.losses,
-        otLosses: stats.ot,
-        points: stats.pts,
-        pointsPercentage: stats.ptPctg
-      }
-    }
+export async function fetchTeams(): Promise<Team[]> {
+  const response = await fetch(teamsUrl())
+  const franchiseData = (await response.json()).data
 
-    return team
-  })
+  const teams: Team[] = franchiseData
+    .filter((franchise: RawFranchiseData) => franchise.lastSeasonId === null)
+    .map(
+      (franchise: RawFranchiseData) =>
+        franchise.teams
+          .filter((t) => t.active === 'Y')
+          .map((t): Team => {
+            const currentLogos = t.logos.filter(
+              (logo) => logo.endSeason === parseInt(defaultSeason.key),
+            )
+            const lightLogo = currentLogos.find((l) => l.background === 'light')
+            const darkLogo = currentLogos.find((l) => l.background === 'dark')
 
-  // Sort teams alphabetically by full name
-  teams.sort((a, b) => {
-    if (a.name < b.name) {
-      return -1
-    } else if (a.name > b.name) {
-      return 1
-    } else {
-      return 0
-    }
-  })
+            return {
+              teamId: t.id,
+              franchiseId: franchise.id,
+              name: t.fullName,
+              conferenceName: t.conference.name,
+              divisionName: t.division.name,
+              abbreviation: t.triCode.toLowerCase(),
+              logo: {
+                id: lightLogo!.id,
+                url: lightLogo!.url,
+              },
+              darkLogo: {
+                id: darkLogo!.id,
+                url: darkLogo!.url,
+              },
+            }
+          })[0],
+    )
 
   return teams
 }
 
-export async function fetchGameData (teamId: number, season: string): Promise<Game[]> {
-  const baseUrl = 'https://statsapi.web.nhl.com/api/v1/schedule'
-  const teamParam = `teamId=${teamId}`
-  const seasonParam = `season=${season}`
-  const expandParam = 'expand=schedule.linescore'
-  const typeParam = 'gameType=R'
+export async function fetchTeamStats(team: Team, season: Season): Promise<TeamStats> {
+  const response = await fetch(teamStatsUrl(team.franchiseId, season.key))
+  const teamStatsData = (await response.json()).data[0]
 
-  const response = await fetch(`${baseUrl}?${teamParam}&${seasonParam}&${expandParam}&${typeParam}`)
-  const data = await response.json()
-  const gameData = data.dates.map((date: any) => date.games[0])
+  return {
+    gamesPlayed: teamStatsData.gamesPlayed,
+    wins: teamStatsData.wins,
+    losses: teamStatsData.losses,
+    otLosses: teamStatsData.otLosses,
+    points: teamStatsData.points,
+    pointsPercentage: teamStatsData.pointPct,
+  }
+}
 
-  const games: Game[] = gameData.map((data: any) => ({
-    gameId: data.gamePk,
-    gameDate: data.gameDate,
-    homeTeam: {
-      id: data.teams.home.team.id,
-      name: data.teams.home.team.name,
-      slug: formatTeamSlug(data.teams.home.team.name)
-    },
-    awayTeam: {
-      id: data.teams.away.team.id,
-      name: data.teams.away.team.name,
-      slug: formatTeamSlug(data.teams.away.team.name)
-    },
-    homeTeamScore: data.linescore.teams.home.goals,
-    awayTeamScore: data.linescore.teams.away.goals,
-    currentPeriod: data.linescore.currentPeriod,
-    isFinal: data.linescore.currentPeriodTimeRemaining === 'Final'
-  }))
+export async function fetchGames(team: Team, season: Season): Promise<Game[]> {
+  const teams = await fetchTeams()
+
+  const response = await fetch(teamScheduleUrl(team.abbreviation, season.key))
+  const rawScheduleData = (await response.json()).games
+
+  const games: Game[] = rawScheduleData
+    .map((gameData: RawGameData): Game => {
+      const endedIn = gameData.gameOutcome?.lastPeriodType
+      const isFinal = gameData.gameState === 'OFF'
+
+      const homeTeam = teams.find((team) => team.teamId === gameData.homeTeam.id)!
+      const homeTeamScore = gameData.homeTeam.score ?? 0
+      const awayTeam = teams.find((team) => team.teamId === gameData.awayTeam.id)!
+      const awayTeamScore = gameData.awayTeam.score ?? 0
+
+      return {
+        gameId: gameData.id,
+        gameDate: new Date(gameData.gameDate),
+        gameType: gameData.gameType,
+        isRegulation: isFinal && endedIn === 'REG',
+        isOvertime: isFinal && endedIn === 'OT',
+        isShootout: isFinal && endedIn === 'SO',
+        homeTeam,
+        awayTeam,
+        homeTeamScore,
+        awayTeamScore,
+        endedIn,
+        isFinal,
+        getWinningTeam: () => {
+          if (homeTeamScore > awayTeamScore) {
+            return homeTeam
+          } else if (awayTeamScore > homeTeamScore) {
+            return awayTeam
+          }
+        },
+      }
+    })
+    .filter((game: Game) => game.gameType === 2)
 
   return games
+}
+
+type RawFranchiseData = {
+  id: number
+  lastSeasonId?: number
+  teams: {
+    id: number
+    fullName: string
+    triCode: string
+    active: 'Y' | 'N'
+    conference: {
+      name: string
+    }
+    division: {
+      name: string
+    }
+    logos: {
+      id: number
+      endSeason: number
+      background: 'light' | 'dark'
+      url: string
+    }[]
+  }[]
+}
+
+type RawGameData = {
+  id: number
+  season: 20232024
+  gameType: 1 | 2 | 3
+  gameDate: string
+  gameState: string
+  awayTeam: {
+    id: number
+    score?: number
+  }
+  homeTeam: {
+    id: number
+    score?: number
+  }
+  gameOutcome?: {
+    lastPeriodType: 'REG' | 'OT' | 'SO'
+  }
 }

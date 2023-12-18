@@ -1,6 +1,4 @@
-import type { Game, TeamStats } from '@/models'
-
-import { wasOvertime, wasShootout } from '@/game-service'
+import { type Game, type TeamStats } from '@/models'
 
 /**
  * Formats a teams record as:
@@ -9,18 +7,22 @@ import { wasOvertime, wasShootout } from '@/game-service'
  * @param states the Team's stats to format the record from
  * @returns the formatted record
  */
-export function formatTeamRecord (stats: TeamStats): string {
+export function formatTeamRecord(stats: TeamStats): string {
   return `${stats.wins} - ${stats.losses} - ${stats.otLosses}`
 }
 
 /**
- * Formats a points percentage as either 1.000 or .XXX
+ * Formats a points percentage as .XXX
+ *
+ * TODO FOrmatting for .000 and 1.000, need to see how those numbers come back
+ * from the NHL's new API
  *
  * @param pointsPercentage THe points percentage to format
  * @returns the formatted points percentage
  */
-export function formatPointsPercentage (pointsPercentage: number): string {
-  const formattedPointsPercentage = (pointsPercentage / 100).toFixed(3)
+export function formatPointsPercentage(pointsPercentage: number): string {
+  const formattedPointsPercentage =
+    pointsPercentage % 1 === 0 ? (pointsPercentage / 100).toFixed(3) : pointsPercentage.toFixed(3)
 
   if (formattedPointsPercentage.startsWith('0')) {
     return formattedPointsPercentage.replace('0', '')
@@ -29,24 +31,6 @@ export function formatPointsPercentage (pointsPercentage: number): string {
   return formattedPointsPercentage
 }
 
-/**
- * The slug is determined by kebab-casing the teams full name.
- * Some additional replacements are needed to account for special characters
- *  - Remove the . in St. Louis
- *  - Replace the é in Montréal with e
- *
- * Example:
- * Anaheim Ducks -> anaheim-ducks
- *
- * @param teamName The full name of the Team
- * @returns the kebab-cased team name
- */
-export function formatTeamSlug (teamName: string): string {
-  return teamName.toLowerCase()
-    .replaceAll(' ', '-')
-    .replaceAll('.', '')
-    .replaceAll('é', 'e')
-}
 /**
  * Formats a games score as:
  * home - away (modifier)
@@ -59,11 +43,11 @@ export function formatTeamSlug (teamName: string): string {
  * @param game The game to format the score of
  * @returns the formatted game score
  */
-export function formatGameScore (game: Game): string {
+export function formatGameScore(game: Game): string {
   let otSuffix = ''
-  if (wasShootout(game)) {
+  if (game.isShootout) {
     otSuffix = ' (SO)'
-  } else if (wasOvertime(game)) {
+  } else if (game.isOvertime) {
     otSuffix = ' (OT)'
   }
 
@@ -80,11 +64,10 @@ export function formatGameScore (game: Game): string {
  * @param game The game to format the date of
  * @returns the formatted date
  */
-export function formatGameDate (game: Game): string {
-  const date = new Date(game.gameDate)
-
+export function formatGameDate(date: Date): string {
   return date.toLocaleDateString('en-CA', {
+    timeZone: 'UTC',
     month: 'short',
-    day: '2-digit'
+    day: '2-digit',
   })
 }
