@@ -6,6 +6,7 @@ export default {
     './src/app/**/*.{js,ts,jsx,tsx}',
     './src/pages/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/utils.ts',
   ],
   theme: {
     colors: {
@@ -17,8 +18,8 @@ export default {
       gray: colors.neutral,
 
       green: colors.emerald,
-      red: colors.rose,
-      yellow: colors.amber,
+      red: colors.red,
+      yellow: colors.yellow,
     },
     extend: {},
   },

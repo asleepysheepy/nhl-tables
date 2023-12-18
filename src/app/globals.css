@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-ana: #fc4c02;
+  --color-ari: #6f263d;
+  --color-bos: #000000;
+  --color-buf: #003087;
+  --color-cgy: #c8102e;
+  --color-car: #c8102e;
+  --color-chi: #c8102e;
+  --color-col: #6f263d;
+  --color-cbj: #041e42;
+  --color-dal: #00843d;
+  --color-det: #c8102e;
+  --color-edm: #cf4520;
+  --color-fla: #c8102e;
+  --color-lak: #000000;
+  --color-min: #154734;
+  --color-mtl: #a6192e;
+  --color-nsh: #041e42;
+  --color-njd: #c8102e;
+  --color-nyi: #003087;
+  --color-nyr: #0033a0;
+  --color-ott: #c8102e;
+  --color-phi: #cf4520;
+  --color-pit: #010101;
+  --color-sjs: #006272;
+  --color-sea: #041c2c;
+  --color-stl: #003087;
+  --color-tbl: #00205b;
+  --color-tor: #00205b;
+  --color-van: #00205b;
+  --color-vgk: #b9975b;
+  --color-wsh: #002e62;
+  --color-wpg: #041e42;
+}
