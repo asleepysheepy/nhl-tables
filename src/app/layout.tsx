@@ -11,7 +11,7 @@ export default async function Layout({ children }: Props): Promise<React.ReactEl
         <div className="min-h-full text-gray-800 dark:text-gray-200">
           <Navbar teams={teams} />
 
-          <main>{children}</main>
+          {children}
 
           <footer className="border-t border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-gray-900">
             <div className="mx-auto max-w-xl px-6 py-12 lg:py-8">

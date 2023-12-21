@@ -54,7 +54,7 @@ export default async function TeamPageLayout({ children, params }: Props) {
           </div>
         </div>
       </header>
-      {children}
+      <main>{children}</main>
     </div>
   )
 }

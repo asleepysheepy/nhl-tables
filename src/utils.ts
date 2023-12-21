@@ -15,6 +15,10 @@ export function getHeaderColorClass(activeTeam?: Team): string {
     : 'bg-black dark:bg-gray-900'
 }
 
+export function calculatePointsPercentage(earnedPoints: number, possiblePoints: number): number {
+  return possiblePoints === 0 ? 0 : Math.round(100 * (earnedPoints / possiblePoints))
+}
+
 /**
  * Given a Team in a Game, returns the opposing team
  *
@@ -70,4 +74,68 @@ export function groupGamesByTeam(games: Game[], team: Team): Record<string, Game
   })
 
   return Object.fromEntries(sortedGroupedGames)
+}
+
+type TeamStandings = {
+  realPoints: number
+  realPossiblePoints: number
+  realPointsPercentage: number
+  hypotheticalPoints: number
+  hypotheticalPossiblePoints: number
+  hypotheticalPointsPercentage: number
+}
+
+export function calculateTeamStandings(games: Game[], team: Team): TeamStandings {
+  const initialTeamStandings = {
+    realPoints: 0,
+    realPossiblePoints: 0,
+    realPointsPercentage: 0,
+    hypotheticalPoints: 0,
+    hypotheticalPossiblePoints: 0,
+    hypotheticalPointsPercentage: 0,
+  }
+
+  return games.reduce((standings, game) => {
+    let { realPoints, realPossiblePoints, hypotheticalPoints, hypotheticalPossiblePoints } =
+      standings
+
+    if (!game.isFinal) {
+      return standings
+    }
+
+    realPossiblePoints += 2
+    hypotheticalPossiblePoints += 3
+
+    const winningTeam = game.getWinningTeam()!
+
+    if (winningTeam.teamId === team.teamId) {
+      realPoints += 2
+
+      if (game.isOvertime || game.isShootout) {
+        hypotheticalPoints += 2
+      } else {
+        hypotheticalPoints += 3
+      }
+    } else {
+      if (game.isOvertime || game.isShootout) {
+        realPoints += 1
+        hypotheticalPoints += 1
+      } else {
+        realPoints += 0
+        hypotheticalPoints += 0
+      }
+    }
+
+    return {
+      realPoints,
+      realPossiblePoints,
+      realPointsPercentage: calculatePointsPercentage(realPoints, realPossiblePoints),
+      hypotheticalPoints,
+      hypotheticalPossiblePoints,
+      hypotheticalPointsPercentage: calculatePointsPercentage(
+        hypotheticalPoints,
+        hypotheticalPossiblePoints,
+      ),
+    }
+  }, initialTeamStandings)
 }

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { formatPointsPercentage } from '@/formatters'
 import { type Game } from '@/models'
 import GameCell from './game-cell'
+import { calculatePointsPercentage } from '@/utils'
 
 export default function TableRow({ teamName, games }: Props): React.ReactElement {
   const rowTeam = games[0].homeTeam.name === teamName ? games[0].homeTeam : games[0].awayTeam
@@ -32,8 +33,7 @@ export default function TableRow({ teamName, games }: Props): React.ReactElement
    * teams haven't played each other yet) then set the percentage to 0 rather than trying
    * to divide by 0.
    */
-  const pointsPercentage =
-    possiblePoints === 0 ? 0 : Math.round(100 * (totalPoints / possiblePoints))
+  const pointsPercentage = calculatePointsPercentage(totalPoints, possiblePoints)
 
   return (
     <tr className={'divide-x divide-gray-300 dark:divide-gray-600'}>
