@@ -9,9 +9,11 @@ import { divisions } from '@/constants'
 import { type Team } from '@/models'
 
 const menuItemGroupClass =
-  'absolute right-0 z-10 mt-2 w-64 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-gray-300 focus:outline-none'
+  'absolute right-0 z-10 mt-2 w-64 origin-top-right divide-y divide-gray-200 dark:divide-gray-600 ' +
+  'rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-gray-300 dark:ring-gray-600 focus:outline-none'
 const menuItemLinkClass =
-  'group flex items-center px-4 py-2 text-gray-900 hover:bg-gray-200 ui-active:bg-gray-200'
+  'group flex items-center px-4 py-2 text-gray-900 dark:text-gray-200 ' +
+  'hover:bg-gray-200 ui-active:bg-gray-200 dark:hover:bg-gray-600 dark:ui-active:bg-gray-600'
 
 function teamsForDivision(division: string, teams: Team[]): Team[] {
   return teams.filter((team) => team.divisionName === division)
