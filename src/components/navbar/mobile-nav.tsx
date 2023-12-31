@@ -20,6 +20,21 @@ export default function MobileNav({ teams }: { teams: Team[] }): React.ReactElem
             <span className={'ml-3'}>{team.name}</span>
           </Disclosure.Button>
         ))}
+        <hr />
+        <Disclosure.Button
+          as={Link}
+          className={'group flex items-center px-4 py-2'}
+          href="/teams-showcase"
+        >
+          Teams Showcase
+        </Disclosure.Button>
+        <Disclosure.Button
+          as={Link}
+          className={'group flex items-center px-4 py-2'}
+          href="/hypothetical-standings"
+        >
+          Hypothetical Standings
+        </Disclosure.Button>
       </div>
     </Disclosure.Panel>
   )

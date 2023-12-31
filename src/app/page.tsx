@@ -16,7 +16,7 @@ export default async function HomePage(): Promise<React.ReactElement> {
         </div>
       </header>
 
-      <div className={'mx-auto mb-6 max-w-7xl px-4 py-6 sm:px-6 lg:px-8'}>
+      <main className={'mx-auto mb-6 max-w-7xl px-4 py-6 sm:px-6 lg:px-8'}>
         <p className={'text-2xl'}>
           Select a team to see how they&apos;re doing against other teams.
         </p>
@@ -47,7 +47,7 @@ export default async function HomePage(): Promise<React.ReactElement> {
             </li>
           ))}
         </ul>
-      </div>
+      </main>
     </>
   )
 }

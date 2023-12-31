@@ -21,7 +21,13 @@ export default {
       red: colors.red,
       yellow: colors.yellow,
     },
-    extend: {},
+    extend: {
+      spacing: {
+        '1/24': '4.1666667%',
+        '3/24': '12.5%',
+        '7/24': '29.1666667%',
+      },
+    },
   },
   plugins: [require('@headlessui/tailwindcss'), require('@tailwindcss/forms')],
 } satisfies Config

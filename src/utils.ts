@@ -1,4 +1,4 @@
-import { type Game, type Team } from '@/models'
+import { type Game, type Team, type TeamStandings } from '@/models'
 
 /**
  * Gets a css class which sets the background color to either the given
@@ -13,6 +13,18 @@ export function getHeaderColorClass(activeTeam?: Team): string {
   return activeTeam != null
     ? `bg-[--color-${activeTeam.abbreviation}]`
     : 'bg-black dark:bg-gray-900'
+}
+
+/**
+ * Calculates the percentage of standings points a team has earned from the
+ * total possible points available.
+ *
+ * @param earnedPoints the points earned in the standings
+ * @param possiblePoints the total points possible based on games played
+ * @returns the percentage of points earned from possible points
+ */
+export function calculatePointsPercentage(earnedPoints: number, possiblePoints: number): number {
+  return possiblePoints === 0 ? 0 : Math.round(100 * (earnedPoints / possiblePoints))
 }
 
 /**
@@ -70,4 +82,64 @@ export function groupGamesByTeam(games: Game[], team: Team): Record<string, Game
   })
 
   return Object.fromEntries(sortedGroupedGames)
+}
+
+/**
+ * Calculates standings information for a team based on the given list of games, including:
+ * - Earned Points, Possible Points and Points Percentage for the NHL's 2-1-0 points system
+ * - Hypothetical Earned Points, Possible Points and Points Percentage for a 3-2-1-0 points system
+ *
+ * @param games The games to determine the standings info for
+ * @param team The team to determine the standings info for
+ * @returns Standings information for the given games
+ */
+export function calculateTeamStandings(games: Game[], team: Team): TeamStandings {
+  const initialTeamStandings = {
+    realPoints: 0,
+    realPossiblePoints: 0,
+    realPointsPercentage: 0,
+    hypoPoints: 0,
+    hypoPossiblePoints: 0,
+    hypoPointsPercentage: 0,
+  }
+
+  return games.reduce((standings, game) => {
+    let { realPoints, realPossiblePoints, hypoPoints, hypoPossiblePoints } = standings
+
+    if (!game.isFinal) {
+      return standings
+    }
+
+    realPossiblePoints += 2
+    hypoPossiblePoints += 3
+
+    const winningTeam = game.getWinningTeam()!
+
+    if (winningTeam.teamId === team.teamId) {
+      realPoints += 2
+
+      if (game.isOvertime || game.isShootout) {
+        hypoPoints += 2
+      } else {
+        hypoPoints += 3
+      }
+    } else {
+      if (game.isOvertime || game.isShootout) {
+        realPoints += 1
+        hypoPoints += 1
+      } else {
+        realPoints += 0
+        hypoPoints += 0
+      }
+    }
+
+    return {
+      realPoints,
+      realPossiblePoints,
+      realPointsPercentage: calculatePointsPercentage(realPoints, realPossiblePoints),
+      hypoPoints,
+      hypoPossiblePoints,
+      hypoPointsPercentage: calculatePointsPercentage(hypoPoints, hypoPossiblePoints),
+    }
+  }, initialTeamStandings)
 }
