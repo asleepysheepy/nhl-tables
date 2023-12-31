@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import { formatPointsPercentage } from '@/formatters'
 import { type Game } from '@/models'
-import GameCell from './game-cell'
 import { calculatePointsPercentage } from '@/utils'
+import GameCell from './game-cell'
 
 export default function TableRow({ teamName, games }: Props): React.ReactElement {
   const rowTeam = games[0].homeTeam.name === teamName ? games[0].homeTeam : games[0].awayTeam
