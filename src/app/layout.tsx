@@ -15,7 +15,7 @@ export default async function Layout({ children }: Props): Promise<React.ReactEl
 
           <footer className="border-t border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-gray-900">
             <div className="mx-auto max-w-xl px-6 py-12 lg:py-8">
-              <p className="text-xs leading-5 text-gray-600 dark:text-gray-500">
+              <p className="text-xs leading-5 text-gray-600 dark:text-gray-400">
                 NHL Schedule Tables is not in any way affiliated with the National Hockey League
                 (NHL) or any of its respective teams. The NHL logo, team logos, team names, and
                 other trademarks are the property of their respective owners. If you are the owner
@@ -23,14 +23,14 @@ export default async function Layout({ children }: Props): Promise<React.ReactEl
                 contact us.
               </p>
               <div className="mt-8 flex items-center justify-between">
-                <p className="text-center text-xs leading-5 text-gray-600 dark:text-gray-500">
+                <p className="text-center text-xs leading-5 text-gray-600 dark:text-gray-400">
                   &copy; 2023 Katie Macke
                 </p>
                 <ul className="flex space-x-6">
                   <li>
                     <a
                       href="https://github.com/asleepysheepy/nhl-tables"
-                      className="text-gray-600 hover:text-gray-800 dark:text-gray-500 dark:hover:text-gray-400"
+                      className="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300"
                     >
                       <span className="sr-only">GitHub</span>
                       <svg
@@ -50,7 +50,7 @@ export default async function Layout({ children }: Props): Promise<React.ReactEl
                   <li>
                     <a
                       href="https://twitter.com/a_sleepy_sheepy"
-                      className="text-gray-600 hover:text-gray-800 dark:text-gray-500 dark:hover:text-gray-400"
+                      className="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300"
                     >
                       <span className="sr-only">Twitter</span>
                       <svg

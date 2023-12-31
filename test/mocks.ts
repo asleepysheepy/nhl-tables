@@ -24,8 +24,8 @@ export function createMockTeam(overrides: Partial<Team> = {}): Team {
 }
 
 export function createMockGame(overrides: Partial<Game> = {}): Game {
-  const awayTeam = createMockTeam()
-  const homeTeam = createMockTeam()
+  const awayTeam = overrides.awayTeam ?? createMockTeam()
+  const homeTeam = overrides.homeTeam ?? createMockTeam()
 
   return {
     gameId: faker.number.int({ min: 2023010001, max: 2023019999 }),

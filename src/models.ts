@@ -43,3 +43,12 @@ export interface Game {
   isFinal: boolean
   getWinningTeam: () => Team | undefined
 }
+
+export interface TeamStandings {
+  realPoints: number
+  realPossiblePoints: number
+  realPointsPercentage: number
+  hypoPoints: number
+  hypoPossiblePoints: number
+  hypoPointsPercentage: number
+}

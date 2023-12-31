@@ -16,6 +16,16 @@ describe('Utils', () => {
     })
   })
 
+  describe('calculatePointsPercentage', () => {
+    it('should return 0 when possible points is 0', () => {
+      expect(Utils.calculatePointsPercentage(0, 0)).toEqual(0)
+    })
+
+    it('should return the percentage of points earned of the total possible points', () => {
+      expect(Utils.calculatePointsPercentage(5, 10)).toEqual(50)
+    })
+  })
+
   describe('getOpposingTeam()', () => {
     it('should return the home team when given the away team', () => {
       const mockHomeTeam = createMockTeam()
@@ -66,6 +76,63 @@ describe('Utils', () => {
       const result = Utils.groupGamesByTeam(mockGames, mockTeam)
 
       expect(result).toEqual(expectedResult)
+    })
+  })
+
+  describe('calculateTeamStandings', () => {
+    it('should calculate the stnadings info', () => {
+      const mockTeam = createMockTeam()
+      const mockGames = [
+        createMockGame({
+          awayTeam: mockTeam,
+          homeTeamScore: 0,
+          awayTeamScore: 1,
+          isRegulation: true,
+        }),
+        createMockGame({
+          awayTeam: mockTeam,
+          homeTeamScore: 0,
+          awayTeamScore: 1,
+          isOvertime: true,
+          isRegulation: false,
+        }),
+        createMockGame({
+          awayTeam: mockTeam,
+          homeTeamScore: 0,
+          awayTeamScore: 1,
+          isShootout: true,
+          isRegulation: false,
+        }),
+        createMockGame({
+          homeTeam: mockTeam,
+          homeTeamScore: 0,
+          awayTeamScore: 1,
+          isShootout: true,
+          isRegulation: false,
+        }),
+        createMockGame({
+          homeTeam: mockTeam,
+          homeTeamScore: 0,
+          awayTeamScore: 1,
+          isOvertime: true,
+          isRegulation: false,
+        }),
+        createMockGame({
+          homeTeam: mockTeam,
+          homeTeamScore: 0,
+          awayTeamScore: 1,
+          isRegulation: true,
+        }),
+      ]
+
+      expect(Utils.calculateTeamStandings(mockGames, mockTeam)).toEqual({
+        realPoints: 8,
+        realPossiblePoints: 12,
+        realPointsPercentage: 67,
+        hypoPoints: 9,
+        hypoPossiblePoints: 18,
+        hypoPointsPercentage: 50,
+      })
     })
   })
 })
