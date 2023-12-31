@@ -3,7 +3,7 @@ import { StandingsTable } from '@/components'
 import { defaultSeason } from '@/constants'
 import { getHeaderColorClass, calculateTeamStandings } from '@/utils'
 
-export default async function WhatIfPage(): Promise<React.ReactElement> {
+export default async function HypotheticalStandingsPage(): Promise<React.ReactElement> {
   const teams = await fetchTeams()
   const schedules = await Promise.all(
     teams.map(async (team) => ({
