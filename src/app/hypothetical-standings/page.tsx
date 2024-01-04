@@ -65,3 +65,7 @@ export default async function HypotheticalStandingsPage(): Promise<React.ReactEl
     </>
   )
 }
+
+export const metadata = {
+  title: 'Hypothetical NHL Standings',
+}

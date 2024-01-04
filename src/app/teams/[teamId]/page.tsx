@@ -1,3 +1,4 @@
+import { type Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { fetchGames, fetchTeams } from '@/api'
 import { ScheduleTable } from '@/components'
@@ -20,9 +21,18 @@ export default async function Page({ params }: Props) {
         <ScheduleTable activeTeam={activeTeam} games={games} />
       </div>
     </div>
-    // <div className={'mx-auto  max-w-7xl py-6 sm:px-6 lg:px-8'}>
-    // </div>
   )
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const teams = await fetchTeams()
+
+  const activeTeamId = params.teamId as string
+  const activeTeam = teams.find((team) => team.teamId === parseInt(activeTeamId))
+
+  return {
+    title: activeTeam?.name != null ? `${activeTeam?.name} Tables` : 'Team Not Found',
+  }
 }
 
 type Props = {

@@ -94,3 +94,7 @@ export default async function TeamsShowcasePage() {
     </>
   )
 }
+
+export const metadata = {
+  title: 'NHL Teams Showcase',
+}
